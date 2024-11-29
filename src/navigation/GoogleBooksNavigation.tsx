@@ -5,7 +5,6 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 //components
 import AllGoogle from '../screens/googleBooks/all/Index';
 import FavGoogle from '../screens/googleBooks/favourite/Index';
-
 //types
 import {
   GoogleBooksNavigationStackParamList,

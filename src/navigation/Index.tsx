@@ -1,4 +1,4 @@
-import {DarkTheme, NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';

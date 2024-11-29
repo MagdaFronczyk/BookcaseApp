@@ -5,7 +5,6 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 //components
 import AllBritish from '../screens/britishNationalBibliography/all/Index';
 import FavBritish from '../screens/britishNationalBibliography/favourite/Index';
-
 //types
 import {
   BritishNationalBibliographyNavigationStackParamList,

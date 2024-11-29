@@ -1,13 +1,11 @@
 import * as React from 'react';
 
-//components
-import BritishNationalBibliographyNavigation from './britishNationalBibliographyNavigation';
-import GoogleBooksNavigation from './googleBooksNavigation';
-import PenguinPublishing from '../screens/penguinPublishing/Index';
-import Poetry from '../screens/poetry/Index';
-import WolneLektury from '../screens/wolneLektury/Index';
-
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+//components
+import BritishNationalBibliographyNavigation from './BritishNationalBibliographyNavigation';
+import GoogleBooksNavigation from './GoogleBooksNavigation';
+import PenguinPublishing from '../screens/penguinPublishing/Index';
+//types
 import {BottomParamList} from '../types/navigation';
 
 const Tab = createBottomTabNavigator<BottomParamList>();
