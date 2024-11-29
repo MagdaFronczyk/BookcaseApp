@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 //components
 import BritishNationalBibliographyNavigation from './BritishNationalBibliographyNavigation';
 import GoogleBooksNavigation from './GoogleBooksNavigation';
-import PenguinPublishing from '../screens/penguinPublishing/Index';
+import PenguinPublishingNavigation from './PenguinPublishingNavigation';
 //types
 import {BottomParamList} from '../types/navigation';
 
@@ -18,7 +18,10 @@ const BottomNavigation: React.FC = (): JSX.Element => {
         component={BritishNationalBibliographyNavigation}
       />
       <Tab.Screen name="Google Books" component={GoogleBooksNavigation} />
-      <Tab.Screen name="Penguin Publishing" component={PenguinPublishing} />
+      <Tab.Screen
+        name="Penguin Publishing"
+        component={PenguinPublishingNavigation}
+      />
     </Tab.Navigator>
   );
 };
