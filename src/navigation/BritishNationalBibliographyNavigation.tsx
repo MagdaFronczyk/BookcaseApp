@@ -1,10 +1,14 @@
 import * as React from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {
+  createMaterialTopTabNavigator,
+  MaterialTopTabBarProps,
+} from '@react-navigation/material-top-tabs';
 //components
 import AllBritish from '../screens/britishNationalBibliography/all/Index';
 import FavBritish from '../screens/britishNationalBibliography/favourite/Index';
+import TopTabBars from './TopTabBars';
 //types
 import {
   BritishNationalBibliographyNavigationStackParamList,
@@ -18,8 +22,16 @@ const Stack =
 
 const BritishNationalBibliographyTopTabNavigation: React.FC =
   (): JSX.Element => {
+    const renderTopBarComponent = (
+      props: MaterialTopTabBarProps,
+    ): JSX.Element => {
+      return <TopTabBars {...props} />;
+    };
     return (
-      <Tab.Navigator>
+      <Tab.Navigator
+        tabBar={(props: MaterialTopTabBarProps) =>
+          renderTopBarComponent(props)
+        }>
         <Tab.Screen
           name="AllBritish"
           component={AllBritish}
