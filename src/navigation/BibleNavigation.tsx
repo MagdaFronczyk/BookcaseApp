@@ -6,19 +6,20 @@ import {
   MaterialTopTabBarProps,
 } from '@react-navigation/material-top-tabs';
 //components
-import AllGoogle from '../screens/googleBooks/all/Index';
-import FavGoogle from '../screens/googleBooks/favourite/Index';
-//types
-import {
-  GoogleBooksNavigationStackParamList,
-  GoogleBooksTabParamList,
-} from '../types/navigation';
+import AllPenguin from '../screens/bible/all/Index';
+import FavPenguin from '../screens/bible/favourite/Index';
 import TopTabBars from './TopTabBars';
 
-const Tab = createMaterialTopTabNavigator<GoogleBooksTabParamList>();
-const Stack = createNativeStackNavigator<GoogleBooksNavigationStackParamList>();
+//types
+import {
+  BibleNavigationStackParamList,
+  BibleTabParamList,
+} from '../types/navigation';
 
-const GoogleBooksTopTabNavigation: React.FC = (): JSX.Element => {
+const Tab = createMaterialTopTabNavigator<BibleTabParamList>();
+const Stack = createNativeStackNavigator<BibleNavigationStackParamList>();
+
+const BibleTopTabNavigation: React.FC = (): JSX.Element => {
   const renderTopBarComponent = (
     props: MaterialTopTabBarProps,
   ): JSX.Element => {
@@ -28,25 +29,25 @@ const GoogleBooksTopTabNavigation: React.FC = (): JSX.Element => {
     <Tab.Navigator
       tabBar={(props: MaterialTopTabBarProps) => renderTopBarComponent(props)}>
       <Tab.Screen
-        name="AllGoogle"
-        component={AllGoogle}
+        name="AllBible"
+        component={AllPenguin}
         options={{title: 'All'}}
       />
       <Tab.Screen
-        name="FavoriteGoogle"
-        component={FavGoogle}
+        name="FavoriteBible"
+        component={FavPenguin}
         options={{title: 'Favourite'}}
       />
     </Tab.Navigator>
   );
 };
 
-const GoogleBooksNavigation: React.FC = (): JSX.Element => {
+const BibleNavigation: React.FC = (): JSX.Element => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="GoogleBooksNavigation"
-        component={GoogleBooksTopTabNavigation}
+        name="BibleNavigation"
+        component={BibleTopTabNavigation}
         options={{
           headerShown: false,
         }}
@@ -55,4 +56,4 @@ const GoogleBooksNavigation: React.FC = (): JSX.Element => {
   );
 };
 
-export default GoogleBooksNavigation;
+export default BibleNavigation;

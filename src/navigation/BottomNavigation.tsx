@@ -5,9 +5,9 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 //components
-import BritishNationalBibliographyNavigation from './BritishNationalBibliographyNavigation';
-import GoogleBooksNavigation from './GoogleBooksNavigation';
-import PenguinPublishingNavigation from './PenguinPublishingNavigation';
+import NewYorkTimesNavigation from './NewYorkTimesNavigation';
+import GoogleBooksNavigation from './WolneLekturyNaviagtion';
+import PenguinPublishingNavigation from './BibleNavigation';
 import BottomTabBars from './BottomTabBars';
 //types
 import {BottomTabParamList} from '../types/navigation';
@@ -21,20 +21,14 @@ const BottomNavigation: React.FC = (): JSX.Element => {
 
   return (
     <Tab.Navigator
-      initialRouteName={'British National Bibliography'}
+      initialRouteName={'New York Times'}
       tabBar={(props: BottomTabBarProps) => renderBottomBarComponent(props)}
       screenOptions={{
         headerTitleAlign: 'center',
       }}>
-      <Tab.Screen
-        name="British National Bibliography"
-        component={BritishNationalBibliographyNavigation}
-      />
-      <Tab.Screen name="Google Books" component={GoogleBooksNavigation} />
-      <Tab.Screen
-        name="Penguin Publishing"
-        component={PenguinPublishingNavigation}
-      />
+      <Tab.Screen name="New York Times" component={NewYorkTimesNavigation} />
+      <Tab.Screen name="Wolne lektury" component={GoogleBooksNavigation} />
+      <Tab.Screen name="Bible" component={PenguinPublishingNavigation} />
     </Tab.Navigator>
   );
 };

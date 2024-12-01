@@ -1,30 +1,22 @@
-import {
-  BottomTabNavigationProp,
-  BottomTabScreenProps,
-} from '@react-navigation/bottom-tabs';
-import {
-  CompositeNavigationProp,
-  CompositeScreenProps,
-} from '@react-navigation/native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {StackNavigationProp, StackScreenProps} from '@react-navigation/stack';
+import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import {CompositeScreenProps} from '@react-navigation/native';
+
+import {StackScreenProps} from '@react-navigation/stack';
 
 export type RootStackParamList = {
   BottomNavigation: undefined;
-  SingleBritish: undefined;
-  SingleGoogle: undefined;
-  SinglePenguin: undefined;
+  SingleNYTimes: undefined;
+  SingleWolneLektury: undefined;
+  SingleBible: undefined;
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
   StackScreenProps<RootStackParamList, T>;
 
 export type BottomTabParamList = {
-  'British National Bibliography': undefined;
-  'Google Books': undefined;
-  'Penguin Publishing': undefined;
-  Poetry: undefined;
+  'New York Times': undefined;
   'Wolne Lektury': undefined;
+  Bible: undefined;
 };
 
 export type BoottomTabScreenProps<T extends keyof BottomTabParamList> =
@@ -33,29 +25,29 @@ export type BoottomTabScreenProps<T extends keyof BottomTabParamList> =
     RootStackScreenProps<keyof RootStackParamList>
   >;
 
-export type BritishNationalBibliographyNavigationStackParamList = {
-  BritishNationalBibliographyNavigation: undefined;
+export type NewYorkTimesNavigationStackParamList = {
+  NewYorkTimesNavigation: undefined;
 };
 
-export type BritishNationalBibliographyTabParamList = {
-  AllBritish: undefined;
-  FavoriteBritish: undefined;
+export type NewYorkTimesNavigationTabParamList = {
+  AllNYTimes: undefined;
+  FavoriteNYTimes: undefined;
 };
 
-export type GoogleBooksNavigationStackParamList = {
-  GoogleBooksNavigation: undefined;
+export type WolneLekturyNavigationStackParamList = {
+  WolneLekturyNavigation: undefined;
 };
 
-export type GoogleBooksTabParamList = {
-  AllGoogle: undefined;
-  FavoriteGoogle: undefined;
+export type WolneLekturyTabParamList = {
+  AllWolneLektury: undefined;
+  FavoriteWolneLektury: undefined;
 };
 
-export type PenguinPublishingNavigationStackParamList = {
-  PenguinPublishingNavigation: undefined;
+export type BibleNavigationStackParamList = {
+  BibleNavigation: undefined;
 };
 
-export type PenguinPublishingTabParamList = {
-  AllPenguin: undefined;
-  FavoritePenguin: undefined;
+export type BibleTabParamList = {
+  AllBible: undefined;
+  FavoriteBible: undefined;
 };

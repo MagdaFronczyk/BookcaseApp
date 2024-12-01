@@ -4,7 +4,7 @@ import {Text, Button, View} from 'react-native';
 import {BoottomTabScreenProps} from '../../../types/navigation';
 
 type Props = {
-  navigation: BoottomTabScreenProps<'Google Books'>['navigation'];
+  navigation: BoottomTabScreenProps<'Wolne Lektury'>['navigation'];
 };
 
 const Index: React.FC<Props> = ({navigation}): JSX.Element => {
@@ -13,7 +13,7 @@ const Index: React.FC<Props> = ({navigation}): JSX.Element => {
       <Text style={{color: 'black'}}>All books</Text>
       <Button
         title="go to single book"
-        onPress={() => navigation.navigate('SingleGoogle')}>
+        onPress={() => navigation.navigate('SingleWolneLektury')}>
         Go to single book
       </Button>
     </View>

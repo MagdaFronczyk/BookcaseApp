@@ -6,20 +6,20 @@ import {
   MaterialTopTabBarProps,
 } from '@react-navigation/material-top-tabs';
 //components
-import AllPenguin from '../screens/penguinPublishing/all/Index';
-import FavPenguin from '../screens/penguinPublishing/favourite/Index';
-import TopTabBars from './TopTabBars';
-
+import AllWolneLektury from '../screens/wolneLektury/all/Index';
+import FavWolneLektury from '../screens/wolneLektury/favourite/Index';
 //types
 import {
-  PenguinPublishingNavigationStackParamList,
-  PenguinPublishingTabParamList,
+  WolneLekturyNavigationStackParamList,
+  WolneLekturyTabParamList,
 } from '../types/navigation';
+import TopTabBars from './TopTabBars';
 
-const Tab = createMaterialTopTabNavigator<PenguinPublishingTabParamList>();
+const Tab = createMaterialTopTabNavigator<WolneLekturyTabParamList>();
 const Stack =
-  createNativeStackNavigator<PenguinPublishingNavigationStackParamList>();
-const PenguinPublishingTopTabNavigation: React.FC = (): JSX.Element => {
+  createNativeStackNavigator<WolneLekturyNavigationStackParamList>();
+
+const WolneLekturyTopTabNavigation: React.FC = (): JSX.Element => {
   const renderTopBarComponent = (
     props: MaterialTopTabBarProps,
   ): JSX.Element => {
@@ -29,25 +29,25 @@ const PenguinPublishingTopTabNavigation: React.FC = (): JSX.Element => {
     <Tab.Navigator
       tabBar={(props: MaterialTopTabBarProps) => renderTopBarComponent(props)}>
       <Tab.Screen
-        name="AllPenguin"
-        component={AllPenguin}
+        name="AllWolneLektury"
+        component={AllWolneLektury}
         options={{title: 'All'}}
       />
       <Tab.Screen
-        name="FavoritePenguin"
-        component={FavPenguin}
+        name="FavoriteWolneLektury"
+        component={FavWolneLektury}
         options={{title: 'Favourite'}}
       />
     </Tab.Navigator>
   );
 };
 
-const PenguinPublishingNavigation: React.FC = (): JSX.Element => {
+const WolneLekturyNavigation: React.FC = (): JSX.Element => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="PenguinPublishingNavigation"
-        component={PenguinPublishingTopTabNavigation}
+        name="WolneLekturyNavigation"
+        component={WolneLekturyTopTabNavigation}
         options={{
           headerShown: false,
         }}
@@ -56,4 +56,4 @@ const PenguinPublishingNavigation: React.FC = (): JSX.Element => {
   );
 };
 
-export default PenguinPublishingNavigation;
+export default WolneLekturyTopTabNavigation;

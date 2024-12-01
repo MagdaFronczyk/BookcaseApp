@@ -4,9 +4,9 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //components
 import BottomNavigation from './BottomNavigation';
-import SingleBritish from '../screens/britishNationalBibliography/single/Index';
-import SingleGoogle from '../screens/googleBooks/single/Index';
-import SinglePenguin from '../screens/penguinPublishing/single/Index';
+import SingleBible from '../screens/bible/single/Index';
+import SingleNYTimes from '../screens/newYorkTimes/single/Index';
+import SingleWolneLektury from '../screens/wolneLektury/single/Index';
 //types
 import {RootStackParamList} from '../types/navigation';
 
@@ -25,9 +25,12 @@ const Index: React.FC = (): JSX.Element => {
                 headerShown: false,
               }}
             />
-            <Stack.Screen name="SingleBritish" component={SingleBritish} />
-            <Stack.Screen name="SingleGoogle" component={SingleGoogle} />
-            <Stack.Screen name="SinglePenguin" component={SinglePenguin} />
+            <Stack.Screen name="SingleBible" component={SingleBible} />
+            <Stack.Screen name="SingleNYTimes" component={SingleNYTimes} />
+            <Stack.Screen
+              name="SingleWolneLektury"
+              component={SingleWolneLektury}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>
