@@ -1,7 +1,10 @@
 import * as React from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {
+  createMaterialTopTabNavigator,
+  MaterialTopTabBarProps,
+} from '@react-navigation/material-top-tabs';
 //components
 import AllGoogle from '../screens/googleBooks/all/Index';
 import FavGoogle from '../screens/googleBooks/favourite/Index';
@@ -10,13 +13,20 @@ import {
   GoogleBooksNavigationStackParamList,
   GoogleBooksTabParamList,
 } from '../types/navigation';
+import TopTabBars from './TopTabBars';
 
 const Tab = createMaterialTopTabNavigator<GoogleBooksTabParamList>();
 const Stack = createNativeStackNavigator<GoogleBooksNavigationStackParamList>();
 
 const GoogleBooksTopTabNavigation: React.FC = (): JSX.Element => {
+  const renderTopBarComponent = (
+    props: MaterialTopTabBarProps,
+  ): JSX.Element => {
+    return <TopTabBars {...props} />;
+  };
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBar={(props: MaterialTopTabBarProps) => renderTopBarComponent(props)}>
       <Tab.Screen
         name="AllGoogle"
         component={AllGoogle}

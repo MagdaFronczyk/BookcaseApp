@@ -1,10 +1,15 @@
 import * as React from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {
+  createMaterialTopTabNavigator,
+  MaterialTopTabBarProps,
+} from '@react-navigation/material-top-tabs';
 //components
 import AllPenguin from '../screens/penguinPublishing/all/Index';
 import FavPenguin from '../screens/penguinPublishing/favourite/Index';
+import TopTabBars from './TopTabBars';
+
 //types
 import {
   PenguinPublishingNavigationStackParamList,
@@ -14,10 +19,15 @@ import {
 const Tab = createMaterialTopTabNavigator<PenguinPublishingTabParamList>();
 const Stack =
   createNativeStackNavigator<PenguinPublishingNavigationStackParamList>();
-
 const PenguinPublishingTopTabNavigation: React.FC = (): JSX.Element => {
+  const renderTopBarComponent = (
+    props: MaterialTopTabBarProps,
+  ): JSX.Element => {
+    return <TopTabBars {...props} />;
+  };
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBar={(props: MaterialTopTabBarProps) => renderTopBarComponent(props)}>
       <Tab.Screen
         name="AllPenguin"
         component={AllPenguin}

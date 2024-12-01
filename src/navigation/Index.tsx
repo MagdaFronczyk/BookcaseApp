@@ -4,6 +4,9 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //components
 import BottomNavigation from './BottomNavigation';
+import SingleBritish from '../screens/britishNationalBibliography/single/Index';
+import SingleGoogle from '../screens/googleBooks/single/Index';
+import SinglePenguin from '../screens/penguinPublishing/single/Index';
 //types
 import {RootStackParamList} from '../types/navigation';
 
@@ -22,6 +25,9 @@ const Index: React.FC = (): JSX.Element => {
                 headerShown: false,
               }}
             />
+            <Stack.Screen name="SingleBritish" component={SingleBritish} />
+            <Stack.Screen name="SingleGoogle" component={SingleGoogle} />
+            <Stack.Screen name="SinglePenguin" component={SinglePenguin} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>
