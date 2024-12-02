@@ -17,7 +17,10 @@ const Index: React.FC = (): JSX.Element => {
     <GestureHandlerRootView style={{flex: 1}}>
       <SafeAreaProvider>
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator
+            screenOptions={{
+              headerTitleAlign: 'center',
+            }}>
             <Stack.Screen
               name="BottomNavigation"
               component={BottomNavigation}

@@ -2,10 +2,12 @@ import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
 import {CompositeScreenProps} from '@react-navigation/native';
 
 import {StackScreenProps} from '@react-navigation/stack';
+//types
+import {INYTBook} from './NYT';
 
 export type RootStackParamList = {
   BottomNavigation: undefined;
-  SingleNYTimes: undefined;
+  SingleNYTimes: {book: INYTBook};
   SingleWolneLektury: undefined;
   SingleBible: undefined;
 };
