@@ -2,11 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 //types
 import {BoottomTabScreenProps} from '../../../types/navigation';
-import {
-  COMMON_INIT_RESPONSE,
-  ICommonResponseWithoutTotal,
-  INYTBook,
-} from '../../../types/index.ts';
+import {ICommonResponseWithoutTotal, INYTBook} from '../../../types/index.ts';
 import {status} from '../../../types/enums';
 //api
 import {getNYThardcoverFictionBestsellers} from '../../../api/getNYThardcoverFictionBestsellers';
@@ -28,7 +24,6 @@ const Index: React.FC<Props> = ({navigation}): JSX.Element => {
   >({status: status.PENDING, data: null});
 
   useEffect(() => {
-    console.warn(COMMON_INIT_RESPONSE);
     const abortController = new AbortController();
     getNYThardcoverFictionBestsellers(setResponse, abortController);
   }, []);

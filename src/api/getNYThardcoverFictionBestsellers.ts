@@ -26,7 +26,6 @@ export const getNYThardcoverFictionBestsellers = (
       });
     })
     .catch(error => {
-      console.error(error, id);
       setResponse(COMMON_ERROR_REPONSE);
       if (error.response) {
         // When response status code is out of 2xx range

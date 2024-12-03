@@ -10,6 +10,10 @@ export type RootStackParamList = {
   SingleNYTimes: {book: INYTBook};
   SingleWolneLektury: undefined;
   SingleBible: undefined;
+  WebViewScreen: {
+    title: INYTBook['title'];
+    url: INYTBook['first_chapter_link'] | INYTBook['book_review_link'];
+  };
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =

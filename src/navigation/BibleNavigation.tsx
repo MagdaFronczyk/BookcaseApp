@@ -31,12 +31,12 @@ const BibleTopTabNavigation: React.FC = (): JSX.Element => {
       <Tab.Screen
         name="AllBible"
         component={AllPenguin}
-        options={{title: 'All'}}
+        options={{title: 'Wszystkie'}}
       />
       <Tab.Screen
         name="FavoriteBible"
         component={FavPenguin}
-        options={{title: 'Favourite'}}
+        options={{title: 'Ulubione'}}
       />
     </Tab.Navigator>
   );

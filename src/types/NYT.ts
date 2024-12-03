@@ -17,11 +17,11 @@ export interface IResults {
   display_name: string;
   normal_list_ends_at: number;
   updated: string;
-  books: IBook[];
+  books: INYTBook[];
   corrections: any[];
 }
 
-export interface IBook {
+export interface INYTBook {
   rank: number;
   rank_last_week: number;
   weeks_on_list: number;

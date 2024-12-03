@@ -49,11 +49,6 @@ const all = StyleSheet.create({
   container: {
     paddingHorizontal: scale(15),
   },
-  pendingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   columnWrapper: {
     justifyContent: 'space-between',
   },

@@ -98,8 +98,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopRightRadius: moderateScale(7),
-    borderTopLeftRadius: moderateScale(7),
+
     borderLeftWidth: moderateScale(2),
     borderRightWidth: moderateScale(2),
     borderTopWidth: moderateScale(2),

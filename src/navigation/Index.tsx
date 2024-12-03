@@ -9,6 +9,7 @@ import SingleNYTimes from '../screens/newYorkTimes/single/Index';
 import SingleWolneLektury from '../screens/wolneLektury/single/Index';
 //types
 import {RootStackParamList} from '../types/navigation';
+import WebViewScreen from '../components/WebViewScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -28,6 +29,7 @@ const Index: React.FC = (): JSX.Element => {
                 headerShown: false,
               }}
             />
+            <Stack.Screen name="WebViewScreen" component={WebViewScreen} />
             <Stack.Screen name="SingleBible" component={SingleBible} />
             <Stack.Screen name="SingleNYTimes" component={SingleNYTimes} />
             <Stack.Screen

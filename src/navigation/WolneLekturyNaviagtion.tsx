@@ -31,12 +31,12 @@ const WolneLekturyTopTabNavigation: React.FC = (): JSX.Element => {
       <Tab.Screen
         name="AllWolneLektury"
         component={AllWolneLektury}
-        options={{title: 'All'}}
+        options={{title: 'Wszystkie'}}
       />
       <Tab.Screen
         name="FavoriteWolneLektury"
         component={FavWolneLektury}
-        options={{title: 'Favourite'}}
+        options={{title: 'Ulubione'}}
       />
     </Tab.Navigator>
   );

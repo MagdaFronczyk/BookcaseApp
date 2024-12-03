@@ -9,7 +9,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import {moderateScale} from 'react-native-size-matters';
 import {useIsFocused} from '@react-navigation/native';
-import DropShadow from 'react-native-drop-shadow';
 import FastImage from 'react-native-fast-image';
 //styles
 import {image as styles} from './_styles';
@@ -17,13 +16,15 @@ import {image as styles} from './_styles';
 import {RootStackScreenProps} from '../../../types/navigation';
 //components
 import LikeIcon from '../../../components/LikeIcon';
+import Details from './Details';
 //styles
 import {theme} from '../../../style/styles';
 //services
 import {
   getAndSetFavorites,
   STOARGE_KEY,
-} from '../../../services/RNAsyncStorage/nytbooks';
+  toggleLike,
+} from '../../../services/RNAsyncStorage/index';
 
 type NYTBookScreenNavigationProps =
   RootStackScreenProps<'SingleNYTimes'>['navigation'];
@@ -37,18 +38,15 @@ type Props = {
 
 const INITIAL_LIKE_ICON_SCALE = 1;
 const END_LIKE_ICON_SCALE = 0.7;
-const SHADOW_BUTTON_OPACITY = 0.12;
 export const LIKE_ICON_SIZE = moderateScale(41);
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
-const AnimatedShadow = Animated.createAnimatedComponent(DropShadow);
 
 const Index: React.FC<Props> = ({navigation, route}): JSX.Element => {
   const isFocused = useIsFocused();
   const [isLiked, setLiked] = useState<boolean>(false);
   const [favouriteTitles, setFavouriteTitles] = useState<string[]>([]);
   const likeScale = useSharedValue<number>(INITIAL_LIKE_ICON_SCALE);
-  const shadowOpacity = useSharedValue<number>(SHADOW_BUTTON_OPACITY);
 
   const {book} = route.params;
 
@@ -69,9 +67,11 @@ const Index: React.FC<Props> = ({navigation, route}): JSX.Element => {
       withTiming(END_LIKE_ICON_SCALE),
       withTiming(INITIAL_LIKE_ICON_SCALE),
     );
-    shadowOpacity.value = withSequence(
-      withTiming(0),
-      withTiming(SHADOW_BUTTON_OPACITY),
+    toggleLike(
+      STOARGE_KEY.FAVOURITE_NYTBOOKS,
+      isLiked,
+      book.title,
+      setFavouriteTitles,
     );
   };
 
@@ -82,15 +82,8 @@ const Index: React.FC<Props> = ({navigation, route}): JSX.Element => {
     [],
   );
 
-  const likeShadowButtonAnimatedStyle = useAnimatedStyle(
-    () => ({
-      shadowOpacity: shadowOpacity.value,
-    }),
-    [],
-  );
-
   return (
-    <View>
+    <View style={{flex: 1}}>
       <FastImage
         resizeMode={FastImage.resizeMode.contain}
         style={styles.image}
@@ -101,25 +94,23 @@ const Index: React.FC<Props> = ({navigation, route}): JSX.Element => {
         }}
       />
       <View style={styles.likeContainer}>
-        <AnimatedShadow
-          style={[styles.heartShadow, likeShadowButtonAnimatedStyle]}>
-          <AnimatedPressable
-            onPress={handleLike}
-            accessibilityRole="button"
-            accessibilityLabel={`${
-              isLiked ? 'usuń polubienie' : 'dodaj polubienie'
-            }`}
-            accessibilityHint={`po naciśnięciu ${
-              isLiked ? 'usuwa podcast z' : 'dodaje podcast do'
-            } listy ulubionych`}
-            style={[styles.likeIcon, likeButtonAnimatedStyle]}>
-            <LikeIcon
-              strokeColor={theme.color.black}
-              color={isLiked ? theme.general.black : 'transparent'}
-            />
-          </AnimatedPressable>
-        </AnimatedShadow>
+        <AnimatedPressable
+          onPress={handleLike}
+          accessibilityRole="button"
+          accessibilityLabel={`${
+            isLiked ? 'usuń polubienie' : 'dodaj polubienie'
+          }`}
+          accessibilityHint={`po naciśnięciu ${
+            isLiked ? 'usuwa książkę z' : 'dodaje książkę do'
+          } listy ulubionych`}
+          style={[styles.likeIcon, likeButtonAnimatedStyle]}>
+          <LikeIcon
+            strokeColor={theme.color.black}
+            color={isLiked ? theme.general.black : 'transparent'}
+          />
+        </AnimatedPressable>
       </View>
+      <Details book={book} />
     </View>
   );
 };
