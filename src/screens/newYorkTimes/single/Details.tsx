@@ -2,6 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
+import {Pressable} from 'react-native-gesture-handler';
 //components
 import RobotoRegular from '../../../components/fonts/RobotoRegular';
 import RobotoBlack from '../../../components/fonts/RobotoBlack';
@@ -12,8 +13,6 @@ import {details as styles} from './_styles';
 //types
 import {IBuyLink, INYTBook} from '../../../types';
 import {RootStackScreenProps} from '../../../types/navigation';
-import {Pressable} from 'react-native-gesture-handler';
-import {moderateScale} from 'react-native-size-matters';
 
 type Props = {
   book: INYTBook;
@@ -33,15 +32,7 @@ const Details: React.FC<Props> = ({book}): JSX.Element => {
   const buyLinks = book.buy_links.map((link, index) => {
     return (
       <Pressable
-        style={{
-          borderWidth: moderateScale(1),
-          marginTop: moderateScale(10),
-          alignItems: 'center',
-          height: moderateScale(40),
-          justifyContent: 'center',
-          borderColor: theme.color.darkGray,
-          borderRadius: moderateScale(20),
-        }}
+        style={styles.buyLinksContainer}
         hitSlop={10}
         key={index}
         accessibilityRole="button"

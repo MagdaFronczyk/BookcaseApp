@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
+import {useIsFocused} from '@react-navigation/native';
+
 //types
 import {BoottomTabScreenProps} from '../../../types/navigation';
 import {ICommonResponseWithoutTotal, INYTBook} from '../../../types/index.ts';
@@ -17,7 +19,6 @@ import {
   getAndSetFavorites,
   STOARGE_KEY,
 } from '../../../services/RNAsyncStorage/index.ts';
-import {useIsFocused} from '@react-navigation/native';
 
 type Props = {
   navigation: BoottomTabScreenProps<'New York Times'>['navigation'];
