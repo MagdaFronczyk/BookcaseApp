@@ -10,8 +10,10 @@ import RobotoMedium from '../../../components/fonts/RobotoMedium';
 import {theme} from '../../../style/styles';
 import {details as styles} from './_styles';
 //types
-import {INYTBook} from '../../../types';
+import {IBuyLink, INYTBook} from '../../../types';
 import {RootStackScreenProps} from '../../../types/navigation';
+import {Pressable} from 'react-native-gesture-handler';
+import {moderateScale} from 'react-native-size-matters';
 
 type Props = {
   book: INYTBook;
@@ -21,12 +23,40 @@ const Details: React.FC<Props> = ({book}): JSX.Element => {
   const navigation =
     useNavigation<RootStackScreenProps<'SingleNYTimes'>['navigation']>();
 
-  const handleNavigation = (): void => {
+  const handleNavigation = (link: IBuyLink): void => {
     navigation.navigate('WebViewScreen', {
-      title: book.title,
-      url: book.first_chapter_link,
+      title: link.name,
+      url: link.url,
     });
   };
+
+  const buyLinks = book.buy_links.map((link, index) => {
+    return (
+      <Pressable
+        style={{
+          borderWidth: moderateScale(1),
+          marginTop: moderateScale(10),
+          alignItems: 'center',
+          height: moderateScale(40),
+          justifyContent: 'center',
+          borderColor: theme.color.darkGray,
+          borderRadius: moderateScale(20),
+        }}
+        hitSlop={10}
+        key={index}
+        accessibilityRole="button"
+        accessibilityLabel={`otwórz link do zakupu książki ${book.title}`}
+        accessibilityHint={`przenosi do strony zakupu książki ${book.title}`}
+        onPress={() => handleNavigation(link)}>
+        <RobotoRegular
+          color={theme.color.darkGray}
+          size={theme.fontSize.thirteen}>
+          {link.name}
+        </RobotoRegular>
+      </Pressable>
+    );
+  });
+
   return (
     <View style={styles.detailsContainer}>
       <RobotoBlack
@@ -35,20 +65,25 @@ const Details: React.FC<Props> = ({book}): JSX.Element => {
         style={styles.title}>
         {book.title}
       </RobotoBlack>
-      <View>
-        <RobotoMedium size={theme.fontSize.thirteen} color={theme.color.black}>
-          Publisher: {book.publisher}
-        </RobotoMedium>
-        <RobotoMedium size={theme.fontSize.thirteen} color={theme.color.black}>
-          Author: {book.author}
-        </RobotoMedium>
-      </View>
+      <RobotoMedium size={theme.fontSize.thirteen} color={theme.color.black}>
+        Publisher: {book.publisher}
+      </RobotoMedium>
+      <RobotoMedium size={theme.fontSize.thirteen} color={theme.color.black}>
+        Author: {book.author}
+      </RobotoMedium>
       <RobotoRegular
         color={theme.color.black}
         size={theme.fontSize.thirteen}
         style={styles.description}>
         {book.description}
       </RobotoRegular>
+      <RobotoMedium
+        size={theme.fontSize.thirteen}
+        color={theme.color.black}
+        style={styles.buyLinks}>
+        Buy links:
+      </RobotoMedium>
+      {buyLinks}
     </View>
   );
 };

@@ -3,11 +3,12 @@ import {StyleSheet} from 'react-native';
 
 import {WebView} from 'react-native-webview';
 // components
-import CommonError from './CommonError';
-import CommonLoading from './CommonLoading';
+import WebViewError from './WebViewError';
+import WebViewLoading from './WebViewLoading';
 //styles
-import {theme} from '../style/styles';
-import {RootStackScreenProps} from '../types/navigation';
+import {theme} from '../../style/styles';
+//types
+import {RootStackScreenProps} from '../../types/navigation';
 
 interface IWebViewScreen {
   navigation: RootStackScreenProps<'WebViewScreen'>['navigation'];
@@ -35,8 +36,8 @@ const WebViewScreen: FunctionComponent<IWebViewScreen> = ({
       originWhitelist={['*']}
       androidLayerType="hardware"
       startInLoadingState={true}
-      renderLoading={() => <CommonLoading />}
-      renderError={() => <CommonError />}
+      renderLoading={() => <WebViewLoading />}
+      renderError={() => <WebViewError />}
     />
   );
 };
@@ -46,6 +47,9 @@ const styles = StyleSheet.create({
     opacity: 0.99,
     minHeight: 1,
     backgroundColor: theme.general.white,
+    height: '100%',
+    width: '100%',
+    flex: 1,
   },
 });
 

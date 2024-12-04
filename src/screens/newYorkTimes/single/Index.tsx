@@ -58,10 +58,6 @@ const Index: React.FC<Props> = ({navigation, route}): JSX.Element => {
     setLiked(favouriteTitles.includes(book.title));
   }, [favouriteTitles, isLiked, book.title]);
 
-  useEffect(() => {
-    navigation.setOptions({title: book.title});
-  });
-
   const handleLike = async (): Promise<void> => {
     likeScale.value = withSequence(
       withTiming(END_LIKE_ICON_SCALE),
@@ -83,7 +79,7 @@ const Index: React.FC<Props> = ({navigation, route}): JSX.Element => {
   );
 
   return (
-    <View style={{flex: 1}}>
+    <>
       <FastImage
         resizeMode={FastImage.resizeMode.contain}
         style={styles.image}
@@ -111,7 +107,7 @@ const Index: React.FC<Props> = ({navigation, route}): JSX.Element => {
         </AnimatedPressable>
       </View>
       <Details book={book} />
-    </View>
+    </>
   );
 };
 

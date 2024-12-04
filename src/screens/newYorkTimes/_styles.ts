@@ -32,17 +32,6 @@ const tile = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-  heartShadow: {
-    marginBottom: 'auto',
-    marginTop: 'auto',
-    shadowColor: theme.general.black,
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 5,
-  },
 });
 
 const all = StyleSheet.create({

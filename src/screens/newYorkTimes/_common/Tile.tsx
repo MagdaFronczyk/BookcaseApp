@@ -5,7 +5,6 @@ import {useNavigation} from '@react-navigation/native';
 //components
 import RobotoBlack from '../../../components/fonts/RobotoBlack';
 import FastImage from 'react-native-fast-image';
-import DropShadow from 'react-native-drop-shadow';
 import LikeIcon from '../../../components/LikeIcon';
 //styles
 import {theme} from '../../../style/styles';
@@ -52,14 +51,12 @@ const Tile: React.FC<Props> = ({book, parent}): JSX.Element | null => {
         }}
         resizeMode={FastImage.resizeMode.contain}>
         {parent === 'fav' && (
-          <DropShadow style={styles.heartShadow}>
-            <View style={styles.likeContainer}>
-              <LikeIcon
-                strokeColor={theme.color.black}
-                color={theme.color.black}
-              />
-            </View>
-          </DropShadow>
+          <View style={styles.likeContainer}>
+            <LikeIcon
+              strokeColor={theme.color.black}
+              color={theme.color.black}
+            />
+          </View>
         )}
       </FastImage>
       <RobotoBlack

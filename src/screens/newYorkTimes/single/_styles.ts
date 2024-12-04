@@ -5,7 +5,7 @@ import {LIKE_ICON_SIZE} from '../../../components/LikeIcon';
 
 const image = StyleSheet.create({
   image: {
-    aspectRatio: 1,
+    aspectRatio: 2,
     marginTop: verticalScale(10),
   },
   likeContainer: {
@@ -16,16 +16,12 @@ const image = StyleSheet.create({
   likeIcon: {
     width: LIKE_ICON_SIZE,
     height: LIKE_ICON_SIZE,
-    borderRadius: scale(50),
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 
 const details = StyleSheet.create({
   detailsContainer: {
-    padding: moderateScale(10),
-    flex: 1,
+    padding: moderateScale(20),
   },
   title: {
     textAlign: 'center',
@@ -33,6 +29,9 @@ const details = StyleSheet.create({
   description: {
     marginTop: moderateScale(10),
     textAlign: 'justify',
+  },
+  buyLinks: {
+    marginTop: moderateScale(10),
   },
 });
 
