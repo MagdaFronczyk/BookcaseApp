@@ -72,7 +72,7 @@ const Index: React.FC<Props> = ({navigation}): JSX.Element => {
   }, [favouriteBooksTitles, response]);
 
   const keyExtractor = (item: INYTBook) => {
-    return item.rank.toString();
+    return item.title;
   };
 
   const renderItem = ({item}: {item: INYTBook}) => {

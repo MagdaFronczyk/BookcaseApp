@@ -42,7 +42,7 @@ const Index: React.FC<Props> = ({book}): JSX.Element => {
   const likeScale = useSharedValue<number>(INITIAL_LIKE_ICON_SCALE);
 
   useEffect(() => {
-    getAndSetFavorites(setFavouriteTitles, STOARGE_KEY.FAVOURITE_NYTBOOKS);
+    getAndSetFavorites(setFavouriteTitles, STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY);
   }, [isFocused]);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const Index: React.FC<Props> = ({book}): JSX.Element => {
       withTiming(INITIAL_LIKE_ICON_SCALE),
     );
     toggleLike(
-      STOARGE_KEY.FAVOURITE_NYTBOOKS,
+      STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY,
       isLiked,
       book.title,
       setFavouriteTitles,

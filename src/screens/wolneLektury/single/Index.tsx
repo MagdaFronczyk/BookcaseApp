@@ -1,4 +1,4 @@
-import {Text} from 'react-native';
+import React from 'react';
 
 //types
 import {RootStackScreenProps} from '../../../types/navigation';
