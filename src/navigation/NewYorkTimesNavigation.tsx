@@ -31,12 +31,12 @@ const NYTimesTopTabNavigation: React.FC = (): JSX.Element => {
       <Tab.Screen
         name="AllNYTimes"
         component={AllNYTimes}
-        options={{title: 'All'}}
+        options={{title: 'Wszystkie'}}
       />
       <Tab.Screen
         name="FavoriteNYTimes"
         component={FavNYTimes}
-        options={{title: 'Favourite'}}
+        options={{title: 'Ulubione'}}
       />
     </Tab.Navigator>
   );

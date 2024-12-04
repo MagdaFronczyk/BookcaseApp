@@ -12,6 +12,7 @@ import {BOTTOM_TAB_HEIGHT} from '../utils/constatnts';
 import {theme} from '../style/styles';
 //components
 import RobotoMedium from '../components/fonts/RobotoMedium';
+import BookIcon from '../components/BookIcon';
 
 const BottomTabBars: React.FC<BottomTabBarProps> = ({
   state,
@@ -66,6 +67,15 @@ const BottomTabBars: React.FC<BottomTabBarProps> = ({
               key={index}
               style={styles.button}>
               <View style={styles.buttonContentWrapper}>
+                <BookIcon
+                  height={moderateScale(20)}
+                  width={moderateScale(20)}
+                  fill={
+                    isFocused
+                      ? theme.backgroundColor.black
+                      : theme.backgroundColor.darkGray
+                  }
+                />
                 <RobotoMedium
                   color={isFocused ? theme.color.black : theme.color.darkGray}
                   size={theme.fontSize.ten}
@@ -98,11 +108,9 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopRightRadius: moderateScale(7),
-    borderTopLeftRadius: moderateScale(7),
-    borderLeftWidth: moderateScale(2),
-    borderRightWidth: moderateScale(2),
-    borderTopWidth: moderateScale(2),
+    borderLeftWidth: moderateScale(1),
+    borderRightWidth: moderateScale(1),
+    borderTopWidth: moderateScale(1),
     borderColor: theme.color.lightGray,
     backgroundColor: theme.backgroundColor.white,
   },
@@ -112,7 +120,7 @@ const styles = StyleSheet.create({
   },
   line: {
     width: '100%',
-    height: verticalScale(3),
+    height: verticalScale(2),
     backgroundColor: theme.color.lightGray,
   },
 });
