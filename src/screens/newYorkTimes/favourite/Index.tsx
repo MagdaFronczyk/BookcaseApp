@@ -7,7 +7,7 @@ import {BoottomTabScreenProps} from '../../../types/navigation';
 import {ICommonResponseWithoutTotal, INYTBook} from '../../../types/index.ts';
 import {status} from '../../../types/enums';
 //api
-import {getNYThardcoverFictionBestsellers} from '../../../api/getNYThardcoverFictionBestsellers';
+import {getNYThardcoverFictionBestsellers} from '../../../api/NYT/getNYThardcoverFictionBestsellers.ts';
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
