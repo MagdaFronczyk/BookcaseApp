@@ -4,7 +4,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //components
 import BottomNavigation from './BottomNavigation';
-import SingleBible from '../screens/bible/single/Index';
+import SingleProjectGutenberg from '../screens/projectGutenberg/single/Index';
 import SingleNYTimes from '../screens/newYorkTimes/single/Index';
 import SingleWolneLektury from '../screens/wolneLektury/single/Index';
 //types
@@ -35,7 +35,10 @@ const Index: React.FC = (): JSX.Element => {
             />
             <Stack.Group screenOptions={{headerTitle: ''}}>
               <Stack.Screen name="WebViewScreen" component={WebViewScreen} />
-              <Stack.Screen name="SingleBible" component={SingleBible} />
+              <Stack.Screen
+                name="SingleProjectGutenberg"
+                component={SingleProjectGutenberg}
+              />
               <Stack.Screen name="SingleNYTimes" component={SingleNYTimes} />
               <Stack.Screen
                 name="SingleWolneLektury"

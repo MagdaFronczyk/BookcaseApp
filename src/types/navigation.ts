@@ -10,7 +10,7 @@ export type RootStackParamList = {
   BottomNavigation: undefined;
   SingleNYTimes: {book: INYTBook};
   SingleWolneLektury: {book: IWolneLekturyBook};
-  SingleBible: undefined;
+  SingleProjectGutenberg: undefined;
   WebViewScreen: {
     title: INYTBook['buy_links'][number]['name'] | 'Wolne Lektury';
     url: INYTBook['buy_links'][number]['url'] | IWolneLekturyBook['url'];
@@ -23,7 +23,7 @@ export type RootStackScreenProps<T extends keyof RootStackParamList> =
 export type BottomTabParamList = {
   'New York Times': undefined;
   'Wolne Lektury': undefined;
-  Bible: undefined;
+  'Project Gutenberg': undefined;
 };
 
 export type BoottomTabScreenProps<T extends keyof BottomTabParamList> =
@@ -50,11 +50,11 @@ export type WolneLekturyTabParamList = {
   FavoriteWolneLektury: undefined;
 };
 
-export type BibleNavigationStackParamList = {
-  BibleNavigation: undefined;
+export type ProjectGutenbergNavigationStackParamList = {
+  ProjectGutenbergNavigation: undefined;
 };
 
-export type BibleTabParamList = {
-  AllBible: undefined;
-  FavoriteBible: undefined;
+export type ProjectGutenbergTabParamList = {
+  AllProjectGutenberg: undefined;
+  FavoriteProjectGutenberg: undefined;
 };

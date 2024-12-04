@@ -6,8 +6,8 @@ import {
 } from '@react-navigation/bottom-tabs';
 //components
 import NewYorkTimesNavigation from './NewYorkTimesNavigation';
-import GoogleBooksNavigation from './WolneLekturyNaviagtion';
-import PenguinPublishingNavigation from './BibleNavigation';
+import WolneLekturyNavigation from './WolneLekturyNaviagtion';
+import ProjectGutenbergNavigation from './ProjectGutenbergNavigation';
 import BottomTabBars from './BottomTabBars';
 //types
 import {BottomTabParamList} from '../types/navigation';
@@ -27,8 +27,11 @@ const BottomNavigation: React.FC = (): JSX.Element => {
         headerTitleAlign: 'center',
       }}>
       <Tab.Screen name="New York Times" component={NewYorkTimesNavigation} />
-      <Tab.Screen name="Wolne lektury" component={GoogleBooksNavigation} />
-      <Tab.Screen name="Bible" component={PenguinPublishingNavigation} />
+      <Tab.Screen name="Wolne Lektury" component={WolneLekturyNavigation} />
+      <Tab.Screen
+        name="Project Gutenberg"
+        component={ProjectGutenbergNavigation}
+      />
     </Tab.Navigator>
   );
 };

@@ -6,20 +6,21 @@ import {
   MaterialTopTabBarProps,
 } from '@react-navigation/material-top-tabs';
 //components
-import AllPenguin from '../screens/bible/all/Index';
-import FavPenguin from '../screens/bible/favourite/Index';
+import AllProjectGutenberg from '../screens/projectGutenberg/all/Index';
+import FavProjectGutenberg from '../screens/projectGutenberg/favourite/Index';
 import TopTabBars from './TopTabBars';
 
 //types
 import {
-  BibleNavigationStackParamList,
-  BibleTabParamList,
+  ProjectGutenbergNavigationStackParamList,
+  ProjectGutenbergTabParamList,
 } from '../types/navigation';
 
-const Tab = createMaterialTopTabNavigator<BibleTabParamList>();
-const Stack = createNativeStackNavigator<BibleNavigationStackParamList>();
+const Tab = createMaterialTopTabNavigator<ProjectGutenbergTabParamList>();
+const Stack =
+  createNativeStackNavigator<ProjectGutenbergNavigationStackParamList>();
 
-const BibleTopTabNavigation: React.FC = (): JSX.Element => {
+const ProjectGutenbergTopTabNavigation: React.FC = (): JSX.Element => {
   const renderTopBarComponent = (
     props: MaterialTopTabBarProps,
   ): JSX.Element => {
@@ -29,25 +30,25 @@ const BibleTopTabNavigation: React.FC = (): JSX.Element => {
     <Tab.Navigator
       tabBar={(props: MaterialTopTabBarProps) => renderTopBarComponent(props)}>
       <Tab.Screen
-        name="AllBible"
-        component={AllPenguin}
+        name="AllProjectGutenberg"
+        component={AllProjectGutenberg}
         options={{title: 'Wszystkie'}}
       />
       <Tab.Screen
-        name="FavoriteBible"
-        component={FavPenguin}
+        name="FavoriteProjectGutenberg"
+        component={FavProjectGutenberg}
         options={{title: 'Ulubione'}}
       />
     </Tab.Navigator>
   );
 };
 
-const BibleNavigation: React.FC = (): JSX.Element => {
+const ProjectGutenbergNavigation: React.FC = (): JSX.Element => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="BibleNavigation"
-        component={BibleTopTabNavigation}
+        name="ProjectGutenbergNavigation"
+        component={ProjectGutenbergTopTabNavigation}
         options={{
           headerShown: false,
         }}
@@ -56,4 +57,4 @@ const BibleNavigation: React.FC = (): JSX.Element => {
   );
 };
 
-export default BibleNavigation;
+export default ProjectGutenbergNavigation;
