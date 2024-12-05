@@ -1,7 +1,6 @@
 import React from 'react';
 import {Dimensions, Pressable, View} from 'react-native';
 
-import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
 //components
 import RobotoBlack from '../../../components/fonts/RobotoBlack';
@@ -13,6 +12,7 @@ import {tile as styles} from '../_style.ts';
 //types
 import {BoottomTabScreenProps} from '../../../types/navigation';
 import {IProjectGutenbergBook} from '../../../types/index.ts';
+import FastImage from 'react-native-fast-image';
 
 type ProjectGutenbergBooksScreenNavigationProps =
   BoottomTabScreenProps<'Project Gutenberg'>['navigation'];
@@ -42,11 +42,14 @@ const Tile: React.FC<Props> = ({book, parent}): JSX.Element | null => {
       accessibilityLabel={`otwórz książkę ${book.title}`}
       accessibilityHint="przenosi do widoku książki"
       onPress={handleNavigation}>
-      <BookIcon
-        width={width * 0.44}
-        height={width * 0.44}
-        fill={theme.backgroundColor.darkGray}
-        style={styles.image}>
+      <FastImage
+        accessible={true}
+        accessibilityRole="image"
+        accessibilityLabel={`okładka książki: ${book.title}`}
+        accessibilityHint="Przedstawia okładkę wybranej książki"
+        style={styles.image}
+        source={require('../../../assets/icons/book.png')}
+        resizeMode={FastImage.resizeMode.contain}>
         {parent === 'fav' && (
           <View style={styles.likeContainer}>
             <LikeIcon
@@ -55,7 +58,7 @@ const Tile: React.FC<Props> = ({book, parent}): JSX.Element | null => {
             />
           </View>
         )}
-      </BookIcon>
+      </FastImage>
       <RobotoBlack
         style={styles.title}
         color={theme.color.black}

@@ -1,14 +1,16 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 //components
 import {LIKE_ICON_SIZE} from '../../../components/LikeIcon';
-//styles
-import {theme} from '../../../style/styles';
+
+const {width} = Dimensions.get('window');
 
 const image = StyleSheet.create({
   image: {
     marginTop: verticalScale(10),
     alignSelf: 'center',
+    width: width * 0.44,
+    aspectRatio: 1,
   },
   likeContainer: {
     position: 'absolute',

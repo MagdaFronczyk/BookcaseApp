@@ -9,6 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import {moderateScale} from 'react-native-size-matters';
 import {useIsFocused} from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
 //styles
 import {image as styles} from './_styles';
 //types
@@ -23,7 +24,6 @@ import {
   STOARGE_KEY,
   toggleLike,
 } from '../../../services/RNAsyncStorage/index';
-import BookIcon from '../../../components/BookIcon';
 
 type Props = {
   book: IProjectGutenbergBook;
@@ -74,11 +74,14 @@ const Image: React.FC<Props> = ({book}): JSX.Element => {
 
   return (
     <>
-      <BookIcon
+      <FastImage
+        accessible={true}
+        accessibilityRole="image"
+        accessibilityLabel={`okładka książki: ${book.title}`}
+        accessibilityHint="Przedstawia okładkę wybranej książki"
         style={styles.image}
-        width={moderateScale(150)}
-        height={moderateScale(150)}
-        fill={theme.backgroundColor.darkGray}
+        source={require('../../../assets/icons/book.png')}
+        resizeMode={FastImage.resizeMode.contain}
       />
       <View style={styles.likeContainer}>
         <AnimatedPressable
