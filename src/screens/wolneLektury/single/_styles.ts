@@ -32,7 +32,7 @@ const details = StyleSheet.create({
     marginTop: moderateScale(10),
     textAlign: 'justify',
   },
-  buyLinksContainer: {
+  downloadLinkContainer: {
     borderWidth: moderateScale(1),
     marginTop: moderateScale(10),
     alignItems: 'center',

@@ -3,11 +3,11 @@ import {
   COMMON_ERROR_REPONSE,
   ICommonResponseWithoutTotal,
   INYTBook,
-  INYTResposne,
-} from '../types';
-import {status} from '../types/enums';
+  INYTResponse,
+} from '../../types';
+import {status} from '../../types/enums';
 //api
-import {NYT_API_AXIOS_INSTANCE, X_API_KEY_NYT} from './Index';
+import {NYT_API_AXIOS_INSTANCE, X_API_KEY_NYT} from '../Index';
 
 export const getNYThardcoverFictionBestsellers = (
   setResponse: React.Dispatch<
@@ -15,7 +15,7 @@ export const getNYThardcoverFictionBestsellers = (
   >,
   abortController: AbortController,
 ): void => {
-  NYT_API_AXIOS_INSTANCE.get<INYTResposne>(
+  NYT_API_AXIOS_INSTANCE.get<INYTResponse>(
     `/lists/current/hardcover-fiction.json?api-key=${X_API_KEY_NYT}`,
     {signal: abortController.signal},
   )

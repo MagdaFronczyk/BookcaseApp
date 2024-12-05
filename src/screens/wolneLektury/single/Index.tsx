@@ -1,7 +1,27 @@
-import {Text} from 'react-native';
+import React from 'react';
 
-const Index: React.FC = (): JSX.Element => {
-  return <Text>Single Book</Text>;
+//types
+import {RootStackScreenProps} from '../../../types/navigation';
+//components
+import Image from './Image';
+import Details from './Details';
+
+type NYTBookScreenRouteProps =
+  RootStackScreenProps<'SingleWolneLektury'>['route'];
+
+type Props = {
+  route: NYTBookScreenRouteProps;
+};
+
+const Index: React.FC<Props> = ({route}): JSX.Element => {
+  const {book} = route.params;
+
+  return (
+    <>
+      <Image book={book} />
+      <Details book={book} />
+    </>
+  );
 };
 
 export default Index;

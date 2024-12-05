@@ -12,11 +12,10 @@ type NYTBookScreenNavigationProps =
 type NYTBookScreenRouteProps = RootStackScreenProps<'SingleNYTimes'>['route'];
 
 type Props = {
-  navigation: NYTBookScreenNavigationProps;
   route: NYTBookScreenRouteProps;
 };
 
-const Index: React.FC<Props> = ({navigation, route}): JSX.Element => {
+const Index: React.FC<Props> = ({route}): JSX.Element => {
   const {book} = route.params;
 
   return (

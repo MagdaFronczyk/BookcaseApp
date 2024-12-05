@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 //types
-import {BoottomTabScreenProps} from '../../../types/navigation';
 import {ICommonResponseWithoutTotal, INYTBook} from '../../../types/index.ts';
 import {status} from '../../../types/enums';
 //api
-import {getNYThardcoverFictionBestsellers} from '../../../api/getNYThardcoverFictionBestsellers';
+import {getNYThardcoverFictionBestsellers} from '../../../api/NYT/getNYThardcoverFictionBestsellers.ts';
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
@@ -14,11 +13,7 @@ import CommonEmpty from '../../../components/CommonEmpty';
 //styles
 import {all as styles} from '../_styles.ts';
 
-type Props = {
-  navigation: BoottomTabScreenProps<'New York Times'>['navigation'];
-};
-
-const Index: React.FC<Props> = ({navigation}): JSX.Element => {
+const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
     ICommonResponseWithoutTotal<INYTBook[] | null>
   >({status: status.PENDING, data: null});
@@ -44,7 +39,7 @@ const Index: React.FC<Props> = ({navigation}): JSX.Element => {
   }, [response]);
 
   const keyExtractor = (item: INYTBook) => {
-    return item.rank.toString();
+    return item.title;
   };
 
   const renderItem = ({item}: {item: INYTBook}) => {

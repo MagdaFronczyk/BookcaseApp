@@ -10,14 +10,14 @@ import LikeIcon from '../../../components/LikeIcon';
 import {theme} from '../../../style/styles';
 import {tile as styles} from '../_styles.ts';
 //types
-import {INYTBook} from '../../../types/nyt.ts';
 import {BoottomTabScreenProps} from '../../../types/navigation';
+import {IWolneLekturyBook} from '../../../types/index.ts';
 
 type NYTBooksScreenNavigationProps =
   BoottomTabScreenProps<'New York Times'>['navigation'];
 
 type Props = {
-  book: INYTBook;
+  book: IWolneLekturyBook;
   parent: 'fav' | 'all';
 };
 
@@ -25,7 +25,7 @@ const Tile: React.FC<Props> = ({book, parent}): JSX.Element | null => {
   const navigation = useNavigation<NYTBooksScreenNavigationProps>();
 
   const handleNavigation = (): void => {
-    navigation.navigate('SingleNYTimes', {
+    navigation.navigate('SingleWolneLektury', {
       book: book,
     });
   };
@@ -45,7 +45,7 @@ const Tile: React.FC<Props> = ({book, parent}): JSX.Element | null => {
         accessibilityHint="Przedstawia okładkę wybranej książki"
         style={styles.image}
         source={{
-          uri: book.book_image,
+          uri: book.simple_thumb,
           priority: FastImage.priority.normal,
           cache: FastImage.cacheControl.immutable,
         }}

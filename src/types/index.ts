@@ -1,5 +1,6 @@
 import {status} from './enums';
-export type * from './NYT';
+export type * from './nyt';
+export type * from './wolneLektury';
 
 export interface ICommonResponse<dataType> {
   status: status;
