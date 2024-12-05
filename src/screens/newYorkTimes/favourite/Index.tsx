@@ -3,11 +3,10 @@ import {FlatList} from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
 
 //types
-import {BoottomTabScreenProps} from '../../../types/navigation';
 import {ICommonResponseWithoutTotal, INYTBook} from '../../../types/index.ts';
 import {status} from '../../../types/enums';
 //api
-import {getNYThardcoverFictionBestsellers} from '../../../api/NYT/getNYThardcoverFictionBestsellers.ts';
+import {getNYThardcoverFictionBestsellers} from '../../../api/nyt/getNYThardcoverFictionBestsellers.ts';
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
@@ -20,11 +19,7 @@ import {
   STOARGE_KEY,
 } from '../../../services/RNAsyncStorage/index.ts';
 
-type Props = {
-  navigation: BoottomTabScreenProps<'New York Times'>['navigation'];
-};
-
-const Index: React.FC<Props> = ({navigation}): JSX.Element => {
+const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
     ICommonResponseWithoutTotal<INYTBook[] | null>
   >({status: status.PENDING, data: null});

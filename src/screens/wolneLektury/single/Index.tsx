@@ -1,4 +1,5 @@
 import React from 'react';
+import {ScrollView} from 'react-native';
 
 //types
 import {RootStackScreenProps} from '../../../types/navigation';
@@ -17,10 +18,10 @@ const Index: React.FC<Props> = ({route}): JSX.Element => {
   const {book} = route.params;
 
   return (
-    <>
+    <ScrollView>
       <Image book={book} />
       <Details book={book} />
-    </>
+    </ScrollView>
   );
 };
 

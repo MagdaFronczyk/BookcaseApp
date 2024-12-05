@@ -1,5 +1,5 @@
 //types
-import {COMMON_ERROR_REPONSE, ICommonResponseWithoutTotal} from '../../types/';
+import {COMMON_ERROR_REPONSE, ICommonResponseWithoutTotal} from '../../types';
 import {status} from '../../types/enums';
 import {
   IWolneLekturyBook,

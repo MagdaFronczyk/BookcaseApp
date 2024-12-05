@@ -9,11 +9,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import {moderateScale} from 'react-native-size-matters';
 import {useIsFocused} from '@react-navigation/native';
-import FastImage from 'react-native-fast-image';
 //styles
 import {image as styles} from './_styles';
 //types
-import {IWolneLekturyBook} from '../../../types';
+import {IProjectGutenbergBook} from '../../../types';
 //components
 import LikeIcon from '../../../components/LikeIcon';
 //styles
@@ -24,9 +23,10 @@ import {
   STOARGE_KEY,
   toggleLike,
 } from '../../../services/RNAsyncStorage/index';
+import BookIcon from '../../../components/BookIcon';
 
 type Props = {
-  book: IWolneLekturyBook;
+  book: IProjectGutenbergBook;
 };
 
 const INITIAL_LIKE_ICON_SCALE = 1;
@@ -42,7 +42,10 @@ const Image: React.FC<Props> = ({book}): JSX.Element => {
   const likeScale = useSharedValue<number>(INITIAL_LIKE_ICON_SCALE);
 
   useEffect(() => {
-    getAndSetFavorites(setFavouriteTitles, STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY);
+    getAndSetFavorites(
+      setFavouriteTitles,
+      STOARGE_KEY.FAVOURITE_PROJECT_GUTENBERG,
+    );
   }, [isFocused]);
 
   useEffect(() => {
@@ -55,7 +58,7 @@ const Image: React.FC<Props> = ({book}): JSX.Element => {
       withTiming(INITIAL_LIKE_ICON_SCALE),
     );
     toggleLike(
-      STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY,
+      STOARGE_KEY.FAVOURITE_PROJECT_GUTENBERG,
       isLiked,
       book.title,
       setFavouriteTitles,
@@ -71,14 +74,11 @@ const Image: React.FC<Props> = ({book}): JSX.Element => {
 
   return (
     <>
-      <FastImage
-        resizeMode={FastImage.resizeMode.contain}
+      <BookIcon
         style={styles.image}
-        source={{
-          uri: book.simple_thumb,
-          priority: FastImage.priority.normal,
-          cache: FastImage.cacheControl.immutable,
-        }}
+        width={moderateScale(150)}
+        height={moderateScale(150)}
+        fill={theme.backgroundColor.darkGray}
       />
       <View style={styles.likeContainer}>
         <AnimatedPressable

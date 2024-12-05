@@ -5,12 +5,13 @@ import {StackScreenProps} from '@react-navigation/stack';
 //types
 import {INYTBook} from './nyt';
 import {IWolneLekturyBook} from './wolneLektury';
+import {IProjectGutenbergBook} from './index';
 
 export type RootStackParamList = {
   BottomNavigation: undefined;
   SingleNYTimes: {book: INYTBook};
   SingleWolneLektury: {book: IWolneLekturyBook};
-  SingleProjectGutenberg: undefined;
+  SingleProjectGutenberg: {book: IProjectGutenbergBook};
   WebViewScreen: {
     title: INYTBook['buy_links'][number]['name'] | 'Wolne Lektury';
     url: INYTBook['buy_links'][number]['url'] | IWolneLekturyBook['url'];

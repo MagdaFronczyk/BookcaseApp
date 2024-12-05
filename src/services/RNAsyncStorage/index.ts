@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export enum STOARGE_KEY {
   FAVOURITE_NYTBOOKS = '@liked_nytbooks',
   FAVOURITE_WOLNE_LEKTURY = '@liked_wolnelektury',
+  FAVOURITE_PROJECT_GUTENBERG = '@liked_projectgutenberg',
 }
 
 export const getAsyncData = async (key: STOARGE_KEY) => {

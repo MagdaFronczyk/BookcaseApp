@@ -5,7 +5,7 @@ import {ICommonResponseWithoutTotal} from '../../../types/index.ts';
 import {status} from '../../../types/enums';
 import {IWolneLekturyBook} from '../../../types/index.ts';
 //api
-import {getWolneLekturyBooks} from '../../../api/WolneLektury/getWolneLekturyBook.ts';
+import {getWolneLekturyBooks} from '../../../api/wolneLektury/getWolneLekturyBooks.ts';
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
