@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
-import {useIsFocused} from '@react-navigation/native';
 
+import {useIsFocused} from '@react-navigation/native';
 //types
-import {BoottomTabScreenProps} from '../../../types/navigation';
 import {
   ICommonResponseWithoutTotal,
   IWolneLekturyBook,
 } from '../../../types/index.ts';
 import {status} from '../../../types/enums';
 //api
-import {getWolneLekturyBooks} from '../../../api/WolneLektury/getWolneLekturyBook.ts';
+import {getWolneLekturyBooks} from '../../../api/wolneLektury/getWolneLekturyBooks.ts';
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
@@ -24,11 +23,7 @@ import {
   STOARGE_KEY,
 } from '../../../services/RNAsyncStorage/index.ts';
 
-type Props = {
-  navigation: BoottomTabScreenProps<'New York Times'>['navigation'];
-};
-
-const Index: React.FC<Props> = ({navigation}): JSX.Element => {
+const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
     ICommonResponseWithoutTotal<IWolneLekturyBook[] | null>
   >({status: status.PENDING, data: null});

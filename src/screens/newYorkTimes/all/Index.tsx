@@ -4,7 +4,7 @@ import {FlatList} from 'react-native';
 import {ICommonResponseWithoutTotal, INYTBook} from '../../../types/index.ts';
 import {status} from '../../../types/enums';
 //api
-import {getNYThardcoverFictionBestsellers} from '../../../api/NYT/getNYThardcoverFictionBestsellers.ts';
+import {getNYThardcoverFictionBestsellers} from '../../../api/nyt/getNYThardcoverFictionBestsellers.ts';
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';

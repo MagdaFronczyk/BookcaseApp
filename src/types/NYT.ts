@@ -1,4 +1,4 @@
-export interface INYTResposne {
+export interface INYTResponse {
   status: string;
   copyright: string;
   num_results: number;
