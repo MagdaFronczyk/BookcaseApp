@@ -1,5 +1,5 @@
 import {status} from './enums';
-export type * from './nyt';
+export type * from './newYorkTimes';
 export type * from './wolneLektury';
 export type * from './projectGutenberg';
 

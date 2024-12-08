@@ -6,7 +6,7 @@ import {useIsFocused} from '@react-navigation/native';
 import {ICommonResponseWithoutTotal, INYTBook} from '../../../types/index.ts';
 import {status} from '../../../types/enums';
 //api
-import {getNYThardcoverFictionBestsellers} from '../../../api/nyt/getNYThardcoverFictionBestsellers.ts';
+import {getNYThardcoverFictionBestsellers} from '../../../api/newYorkTimes/getNYThardcoverFictionBestsellers.ts';
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';

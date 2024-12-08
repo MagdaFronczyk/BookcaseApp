@@ -3,7 +3,7 @@ import {CompositeScreenProps} from '@react-navigation/native';
 
 import {StackScreenProps} from '@react-navigation/stack';
 //types
-import {INYTBook} from './nyt';
+import {INYTBook} from './newYorkTimes';
 import {IWolneLekturyBook} from './wolneLektury';
 import {IProjectGutenbergBook} from './index';
 
