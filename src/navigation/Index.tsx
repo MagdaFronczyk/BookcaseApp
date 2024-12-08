@@ -1,3 +1,4 @@
+import React from 'react';
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -33,8 +34,13 @@ const Index: React.FC = (): JSX.Element => {
                 headerShown: false,
               }}
             />
-            <Stack.Group screenOptions={{headerTitle: ''}}>
-              <Stack.Screen name="WebViewScreen" component={WebViewScreen} />
+            <Stack.Screen name="WebViewScreen" component={WebViewScreen} />
+            <Stack.Group
+              screenOptions={{
+                headerTitle: '',
+                headerBackTitle: 'Back',
+                headerTintColor: theme.color.black,
+              }}>
               <Stack.Screen
                 name="SingleProjectGutenberg"
                 component={SingleProjectGutenberg}

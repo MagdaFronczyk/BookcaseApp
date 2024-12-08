@@ -13,14 +13,24 @@ import {theme} from '../style/styles';
 //components
 import RobotoMedium from '../components/fonts/RobotoMedium';
 import BookIcon from '../components/BookIcon';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const BottomTabBars: React.FC<BottomTabBarProps> = ({
   state,
   descriptors,
   navigation,
 }): JSX.Element | null => {
+  const insets = useSafeAreaInsets();
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        {
+          paddingBottom: insets.bottom,
+          paddingLeft: insets.left,
+          paddingRight: insets.right,
+        },
+      ]}>
       {state.routes.map((route, index) => {
         const {options}: {options: BottomTabNavigationOptions} =
           descriptors[route.key];
