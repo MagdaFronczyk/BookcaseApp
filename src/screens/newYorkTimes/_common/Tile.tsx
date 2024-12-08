@@ -10,7 +10,7 @@ import LikeIcon from '../../../components/LikeIcon';
 import {theme} from '../../../style/styles';
 import {tile as styles} from '../_styles.ts';
 //types
-import {INYTBook} from '../../../types/nyt.ts';
+import {INYTBook} from '../../../types/newYorkTimes.ts';
 import {BoottomTabScreenProps} from '../../../types/navigation';
 
 type NYTBooksScreenNavigationProps =
