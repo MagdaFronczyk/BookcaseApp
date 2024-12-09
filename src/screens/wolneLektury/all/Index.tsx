@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, ScrollView} from 'react-native';
 //types
 import {ICommonResponseWithoutTotal} from '../../../types/index.ts';
 import {status} from '../../../types/enums';
