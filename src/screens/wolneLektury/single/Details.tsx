@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
@@ -28,6 +28,7 @@ const Details: React.FC<Props> = ({book}): JSX.Element => {
       url: book.url,
     });
   };
+
 
   return (
     <View style={styles.detailsContainer}>
