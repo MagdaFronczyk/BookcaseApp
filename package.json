@@ -10,13 +10,16 @@
     "format": "prettier --write .",
     "test": "jest",
     "husky": {
-  "hooks": {
-    "pre-commit": "lint-staged"
-  }
-},
-"lint-staged": {
-  "*": "prettier --write"
-}
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    },
+    "lint-staged": {
+      "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+    }
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.0",
