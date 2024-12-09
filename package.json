@@ -8,19 +8,16 @@
     "lint": "prettier --check .",
     "start": "react-native start",
     "format": "prettier --write .",
-    "test": "jest",
-    "husky": {
-      "hooks": {
-        "pre-commit": "lint-staged"
-      }
-    },
-    "lint-staged": {
-      "*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-    }
+    "test": "jest"
   },
+  "husky": {
+  "hooks": {
+    "pre-commit": "lint-staged"
+  }
+},
+"lint-staged": {
+  "*": "prettier --write"
+},
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.0",
     "@react-native-masked-view/masked-view": "^0.3.2",
