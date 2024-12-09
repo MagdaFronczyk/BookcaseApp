@@ -1,11 +1,10 @@
 import React from 'react';
-import {Dimensions, Pressable, View} from 'react-native';
+import {Pressable, View} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 //components
 import RobotoBlack from '../../../components/fonts/RobotoBlack';
 import LikeIcon from '../../../components/LikeIcon';
-import BookIcon from '../../../components/BookIcon.tsx';
 //styles
 import {theme} from '../../../style/styles';
 import {tile as styles} from '../_style.ts';
@@ -21,8 +20,6 @@ type Props = {
   book: IProjectGutenbergBook;
   parent: 'fav' | 'all';
 };
-
-const {width} = Dimensions.get('window');
 
 const Tile: React.FC<Props> = ({book, parent}): JSX.Element | null => {
   const navigation =

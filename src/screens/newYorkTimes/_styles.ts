@@ -24,6 +24,8 @@ const tile = StyleSheet.create({
   },
   likeContainer: {
     position: 'absolute',
+    bottom: 0,
+    right: 0,
     backgroundColor: theme.general.white,
     height: scale(41),
     aspectRatio: 1,
