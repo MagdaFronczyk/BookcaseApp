@@ -13,7 +13,7 @@ import {getWolneLekturyBooks} from '../../../api/wolneLektury/getWolneLekturyBoo
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
-import Tile from '../_common/Tile';
+import Tile from '../../../components/Tile.tsx';
 import CommonEmpty from '../../../components/CommonEmpty';
 //styles
 import {all as styles} from '../_styles.ts';
@@ -22,6 +22,7 @@ import {
   getAndSetFavorites,
   STOARGE_KEY,
 } from '../../../services/RNAsyncStorage/index.ts';
+import FastImage from 'react-native-fast-image';
 
 const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
@@ -78,7 +79,18 @@ const Index: React.FC = (): JSX.Element => {
   };
 
   const renderItem = ({item}: {item: IWolneLekturyBook}) => {
-    return <Tile book={item} parent="fav" />;
+    return (
+      <Tile
+        book={item}
+        parent="all"
+        imageSource={{
+          uri: item.simple_thumb,
+          priority: FastImage.priority.normal,
+          cache: FastImage.cacheControl.immutable,
+        }}
+        navigationDestinantion="SingleWolneLektury"
+      />
+    );
   };
 
   const listEmptyComponent = (): JSX.Element => {

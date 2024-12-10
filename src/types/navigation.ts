@@ -8,7 +8,7 @@ import {IWolneLekturyBook} from './wolneLektury';
 import {IProjectGutenbergBook} from './index';
 
 export type RootStackParamList = {
-  BottomNavigation: undefined;
+  DrawerNavigation: undefined;
   SingleNYTimes: {book: INYTBook};
   SingleWolneLektury: {book: IWolneLekturyBook};
   SingleProjectGutenberg: {book: IProjectGutenbergBook};
@@ -16,6 +16,8 @@ export type RootStackParamList = {
     title: INYTBook['buy_links'][number]['name'] | 'Wolne Lektury';
     url: INYTBook['buy_links'][number]['url'] | IWolneLekturyBook['url'];
   };
+  Informacje: undefined;
+  Kontakt: undefined;
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
@@ -58,4 +60,8 @@ export type ProjectGutenbergNavigationStackParamList = {
 export type ProjectGutenbergTabParamList = {
   AllProjectGutenberg: undefined;
   FavoriteProjectGutenberg: undefined;
+};
+
+export type DrawerNavigationParamList = {
+  BottomNavigation: undefined;
 };

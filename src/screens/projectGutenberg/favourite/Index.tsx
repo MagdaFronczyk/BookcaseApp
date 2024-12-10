@@ -13,7 +13,7 @@ import {getProjectGutenbergBooks} from '../../../api/projectGutenberg/getProject
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
-import Tile from '../_common/Tile';
+import Tile from '../../../components/Tile.tsx';
 import CommonEmpty from '../../../components/CommonEmpty';
 //styles
 import {all as styles} from '../_style.ts';
@@ -80,7 +80,14 @@ const Index: React.FC = (): JSX.Element => {
   };
 
   const renderItem = ({item}: {item: IProjectGutenbergBook}) => {
-    return <Tile book={item} parent="fav" />;
+    return (
+      <Tile
+        book={item}
+        parent="fav"
+        imageSource={require('../../../assets/icons/book.png')}
+        navigationDestinantion="SingleProjectGutenberg"
+      />
+    );
   };
 
   const listEmptyComponent = (): JSX.Element => {
