@@ -1,11 +1,12 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
 
+import FastImage from 'react-native-fast-image';
 //components
 import Details from './Details';
-import Image from './Image';
 //types
 import {RootStackScreenProps} from '../../../types/navigation';
+import Image from '../../../components/BookImage';
 
 type NYTBookScreenRouteProps = RootStackScreenProps<'SingleNYTimes'>['route'];
 
@@ -18,7 +19,14 @@ const Index: React.FC<Props> = ({route}): JSX.Element => {
 
   return (
     <ScrollView>
-      <Image book={book} />
+      <Image
+        imageSource={{
+          uri: book.book_image,
+          priority: FastImage.priority.normal,
+          cache: FastImage.cacheControl.immutable,
+        }}
+        book={book}
+      />
       <Details book={book} />
     </ScrollView>
   );

@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, ScrollView} from 'react-native';
+import {FlatList} from 'react-native';
+
+import FastImage from 'react-native-fast-image';
 //types
 import {ICommonResponseWithoutTotal} from '../../../types/index.ts';
 import {status} from '../../../types/enums';
@@ -9,8 +11,8 @@ import {getWolneLekturyBooks} from '../../../api/wolneLektury/getWolneLekturyBoo
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
-import Tile from '../_common/Tile';
 import CommonEmpty from '../../../components/CommonEmpty';
+import Tile from '../../../components/Tile.tsx';
 //styles
 import {all as styles} from '../_styles.ts';
 
@@ -44,7 +46,18 @@ const Index: React.FC = (): JSX.Element => {
   };
 
   const renderItem = ({item}: {item: IWolneLekturyBook}) => {
-    return <Tile book={item} parent="all" />;
+    return (
+      <Tile
+        book={item}
+        parent="all"
+        imageSource={{
+          uri: item.simple_thumb,
+          priority: FastImage.priority.normal,
+          cache: FastImage.cacheControl.immutable,
+        }}
+        navigationDestinantion="SingleWolneLektury"
+      />
+    );
   };
 
   const listEmptyComponent = (): JSX.Element => {

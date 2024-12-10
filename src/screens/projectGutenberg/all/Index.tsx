@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
+
 //types
 import {
   ICommonResponseWithoutTotal,
@@ -11,8 +12,8 @@ import {getProjectGutenbergBooks} from '../../../api/projectGutenberg/getProject
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
-import Tile from '../_common/Tile';
 import CommonEmpty from '../../../components/CommonEmpty';
+import Tile from '../../../components/Tile.tsx';
 //styles
 import {all as styles} from '../_style.ts';
 
@@ -46,7 +47,14 @@ const Index: React.FC = (): JSX.Element => {
   };
 
   const renderItem = ({item}: {item: IProjectGutenbergBook}) => {
-    return <Tile book={item} parent="all" />;
+    return (
+      <Tile
+        book={item}
+        parent="all"
+        imageSource={require('../../../assets/icons/book.png')}
+        navigationDestinantion="SingleProjectGutenberg"
+      />
+    );
   };
 
   const listEmptyComponent = (): JSX.Element => {

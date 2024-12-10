@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView} from 'react-native';
 
 //components
-import Image from './Image';
+import Image from '../../../components/BookImage';
 import Details from './Details';
 //types
 import {RootStackScreenProps} from '../../../types/navigation';
@@ -19,7 +19,10 @@ const Index: React.FC<Props> = ({route}): JSX.Element => {
 
   return (
     <ScrollView>
-      <Image book={book} />
+      <Image
+        imageSource={require('../../../assets/icons/book.png')}
+        book={book}
+      />
       <Details book={book} />
     </ScrollView>
   );

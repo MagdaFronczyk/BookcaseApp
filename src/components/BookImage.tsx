@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Pressable, View} from 'react-native';
+import {Pressable, StyleSheet, View} from 'react-native';
 
 import Animated, {
   useAnimatedStyle,
@@ -7,26 +7,29 @@ import Animated, {
   withSequence,
   withTiming,
 } from 'react-native-reanimated';
-import {moderateScale} from 'react-native-size-matters';
+import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import {useIsFocused} from '@react-navigation/native';
-import FastImage from 'react-native-fast-image';
-//styles
-import {image as styles} from './_styles';
+import FastImage, {Source} from 'react-native-fast-image';
 //types
-import {IWolneLekturyBook} from '../../../types';
+import {
+  INYTBook,
+  IProjectGutenbergBook,
+  IWolneLekturyBook,
+} from '../types/index';
 //components
-import LikeIcon from '../../../components/LikeIcon';
+import LikeIcon from './LikeIcon';
 //styles
-import {theme} from '../../../style/styles';
+import {theme} from '../style/styles';
 //services
 import {
   getAndSetFavorites,
   STOARGE_KEY,
   toggleLike,
-} from '../../../services/RNAsyncStorage/index';
+} from '../services/RNAsyncStorage/index';
 
 type Props = {
-  book: IWolneLekturyBook;
+  book: IWolneLekturyBook | IProjectGutenbergBook | INYTBook;
+  imageSource: Source;
 };
 
 const INITIAL_LIKE_ICON_SCALE = 1;
@@ -35,7 +38,7 @@ export const LIKE_ICON_SIZE = moderateScale(41);
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-const Image: React.FC<Props> = ({book}): JSX.Element => {
+const Image: React.FC<Props> = ({book, imageSource}): JSX.Element => {
   const isFocused = useIsFocused();
   const [isLiked, setLiked] = useState<boolean>(false);
   const [favouriteTitles, setFavouriteTitles] = useState<string[]>([]);
@@ -74,11 +77,7 @@ const Image: React.FC<Props> = ({book}): JSX.Element => {
       <FastImage
         resizeMode={FastImage.resizeMode.contain}
         style={styles.image}
-        source={{
-          uri: book.simple_thumb,
-          priority: FastImage.priority.normal,
-          cache: FastImage.cacheControl.immutable,
-        }}
+        source={imageSource}
       />
       <View style={styles.likeContainer}>
         <AnimatedPressable
@@ -100,5 +99,21 @@ const Image: React.FC<Props> = ({book}): JSX.Element => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  image: {
+    aspectRatio: 2,
+    marginTop: verticalScale(10),
+  },
+  likeContainer: {
+    position: 'absolute',
+    top: verticalScale(33),
+    right: scale(27),
+  },
+  likeIcon: {
+    width: LIKE_ICON_SIZE,
+    height: LIKE_ICON_SIZE,
+  },
+});
 
 export default Image;

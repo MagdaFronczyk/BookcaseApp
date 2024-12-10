@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
 
+import FastImage from 'react-native-fast-image';
 //types
 import {ICommonResponseWithoutTotal, INYTBook} from '../../../types/index.ts';
 import {status} from '../../../types/enums';
@@ -10,7 +11,6 @@ import {getNYThardcoverFictionBestsellers} from '../../../api/newYorkTimes/getNY
 //components
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
-import Tile from '../_common/Tile';
 import CommonEmpty from '../../../components/CommonEmpty';
 //styles
 import {all as styles} from '../_styles.ts';
@@ -18,6 +18,7 @@ import {
   getAndSetFavorites,
   STOARGE_KEY,
 } from '../../../services/RNAsyncStorage/index.ts';
+import Tile from '../../../components/Tile.tsx';
 
 const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
@@ -71,7 +72,18 @@ const Index: React.FC = (): JSX.Element => {
   };
 
   const renderItem = ({item}: {item: INYTBook}) => {
-    return <Tile book={item} parent="fav" />;
+    return (
+      <Tile
+        book={item}
+        parent="fav"
+        imageSource={{
+          uri: item.book_image,
+          priority: FastImage.priority.normal,
+          cache: FastImage.cacheControl.immutable,
+        }}
+        navigationDestinantion="SingleNYTimes"
+      />
+    );
   };
 
   const listEmptyComponent = (): JSX.Element => {

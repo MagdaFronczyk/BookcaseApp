@@ -4,13 +4,16 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //components
-import BottomNavigation from './BottomNavigation';
 import SingleProjectGutenberg from '../screens/projectGutenberg/single/Index';
 import SingleNYTimes from '../screens/newYorkTimes/single/Index';
 import SingleWolneLektury from '../screens/wolneLektury/single/Index';
+import DrawerNavigation from './DrawerNavigation';
+import Information from '../screens/information/Index';
+import Contact from '../screens/contact/Index';
 //types
 import {RootStackParamList} from '../types/navigation';
 import WebViewScreen from '../components/webView/WebViewScreen';
+//styles
 import {theme} from '../style/styles';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -20,6 +23,7 @@ const Index: React.FC = (): JSX.Element => {
   appTheme.colors.background = theme.backgroundColor.white;
 
   return (
+
     <GestureHandlerRootView style={{flex: 1}}>
       <SafeAreaProvider>
         <NavigationContainer theme={appTheme}>
@@ -28,8 +32,8 @@ const Index: React.FC = (): JSX.Element => {
               headerTitleAlign: 'center',
             }}>
             <Stack.Screen
-              name="BottomNavigation"
-              component={BottomNavigation}
+              name="DrawerNavigation"
+              component={DrawerNavigation}
               options={{
                 headerShown: false,
               }}
@@ -50,6 +54,8 @@ const Index: React.FC = (): JSX.Element => {
                 name="SingleWolneLektury"
                 component={SingleWolneLektury}
               />
+              <Stack.Screen name="Informacje" component={Information} />
+              <Stack.Screen name="Kontakt" component={Contact} />
             </Stack.Group>
           </Stack.Navigator>
         </NavigationContainer>
