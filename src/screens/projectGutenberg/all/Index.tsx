@@ -50,6 +50,7 @@ const Index: React.FC = (): JSX.Element => {
     return (
       <Tile
         book={item}
+        books={response.data}
         parent="all"
         imageSource={require('../../../assets/icons/book.png')}
         navigationDestinantion="SingleProjectGutenberg"

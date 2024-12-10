@@ -2,7 +2,7 @@ import {useIsFocused} from '@react-navigation/native';
 import {useEffect, useState} from 'react';
 
 //types
-import {INYTBook, IProjectGutenbergBook, IWolneLekturyBook} from '../types';
+import {IWolneLekturyBook} from '../types';
 //services
 import {
   getAndSetFavorites,
@@ -10,37 +10,33 @@ import {
   toggleLike,
 } from '../services/RNAsyncStorage';
 
-export const useFavourite = (
-  books: IWolneLekturyBook[] | INYTBook[] | IProjectGutenbergBook[] | null,
-  storageKey: STOARGE_KEY,
-  bookTitle?:
-    | IWolneLekturyBook['title']
-    | INYTBook['title']
-    | IProjectGutenbergBook['title'],
+export const useFavouriteProjectWolneLektury = (
+  books: IWolneLekturyBook[] | null,
+  bookTitle?: IWolneLekturyBook['title'],
 ) => {
   const isFocused = useIsFocused();
   const [favouriteBooksTitles, setFavouriteBooksTitles] = useState<string[]>(
     [],
   );
-  const [isLiked, setLiked] = useState<boolean>(false);
-  const [favouriteBooks, setFavouriteBooks] = useState<
-    IWolneLekturyBook[] | INYTBook[] | IProjectGutenbergBook[]
+  const [isLikedWolneLektury, setLiked] = useState<boolean>(false);
+  const [favouriteWolneLektury, setFavouriteBooks] = useState<
+    IWolneLekturyBook[]
   >([]);
 
   useEffect(() => {
-    getAndSetFavorites(setFavouriteBooksTitles, storageKey);
-  }, [isFocused, storageKey]);
+    getAndSetFavorites(
+      setFavouriteBooksTitles,
+      STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY,
+    );
+  }, [isFocused]);
 
   useEffect(() => {
     bookTitle && setLiked(favouriteBooksTitles.includes(bookTitle));
-  }, [favouriteBooksTitles, isLiked, bookTitle]);
+  }, [favouriteBooksTitles, isLikedWolneLektury, bookTitle]);
 
   useEffect(() => {
     if (books && favouriteBooksTitles) {
-      const favBooks:
-        | IWolneLekturyBook[]
-        | INYTBook[]
-        | IProjectGutenbergBook[] = [];
+      const favBooks: IWolneLekturyBook[] = [];
       favouriteBooksTitles.forEach(title => {
         const favourites = books.find(book => book.title === title);
         if (favourites) {
@@ -51,15 +47,19 @@ export const useFavourite = (
     }
   }, [favouriteBooksTitles, books]);
 
-  const handleLike = async (): Promise<void> => {
+  const handleLikeWolneLektury = async (): Promise<void> => {
     bookTitle &&
       toggleLike(
         STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY,
-        isLiked,
+        isLikedWolneLektury,
         bookTitle,
         setFavouriteBooksTitles,
       );
   };
 
-  return {favouriteBooks, isLiked, handleLike};
+  return {
+    favouriteWolneLektury,
+    isLikedWolneLektury,
+    handleLikeWolneLektury,
+  };
 };

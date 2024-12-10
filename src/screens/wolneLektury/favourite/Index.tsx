@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 
-import {useIsFocused} from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
 //types
 import {
   ICommonResponseWithoutTotal,
@@ -18,21 +18,16 @@ import CommonEmpty from '../../../components/CommonEmpty';
 //styles
 import {all as styles} from '../_styles.ts';
 //services
-import {
-  getAndSetFavorites,
-  STOARGE_KEY,
-} from '../../../services/RNAsyncStorage/index.ts';
-import FastImage from 'react-native-fast-image';
+import {useFavouriteProjectWolneLektury} from '../../../utils/useFavouriteWolneLektury.ts';
 
 const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
     ICommonResponseWithoutTotal<IWolneLekturyBook[] | null>
   >({status: status.PENDING, data: null});
-  const [favoriteBooks, setFavouriteBooks] = useState<IWolneLekturyBook[]>([]);
-  const [favouriteBooksTitles, setFavouriteBooksTitles] = useState<string[]>(
-    [],
+
+  const {favouriteWolneLektury} = useFavouriteProjectWolneLektury(
+    response.data,
   );
-  const isFocused = useIsFocused();
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -54,26 +49,6 @@ const Index: React.FC = (): JSX.Element => {
     };
   }, [response]);
 
-  useEffect(() => {
-    getAndSetFavorites(
-      setFavouriteBooksTitles,
-      STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY,
-    );
-  }, [isFocused]);
-
-  useEffect(() => {
-    if (response.data && favouriteBooksTitles) {
-      const favBooks: IWolneLekturyBook[] = [];
-      favouriteBooksTitles.forEach(title => {
-        const favourites = response.data?.find(book => book.title === title);
-        if (favourites) {
-          favBooks.push(favourites);
-        }
-      });
-      setFavouriteBooks(favBooks);
-    }
-  }, [favouriteBooksTitles, response]);
-
   const keyExtractor = (item: IWolneLekturyBook) => {
     return item.title;
   };
@@ -82,7 +57,7 @@ const Index: React.FC = (): JSX.Element => {
     return (
       <Tile
         book={item}
-        parent="all"
+        parent="fav"
         imageSource={{
           uri: item.simple_thumb,
           priority: FastImage.priority.normal,
@@ -107,7 +82,7 @@ const Index: React.FC = (): JSX.Element => {
 
   return (
     <FlatList
-      data={favoriteBooks}
+      data={favouriteWolneLektury}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
       ListEmptyComponent={listEmptyComponent}

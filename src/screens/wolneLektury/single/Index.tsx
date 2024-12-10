@@ -7,6 +7,8 @@ import {RootStackScreenProps} from '../../../types/navigation';
 //components
 import Details from './Details';
 import Image from '../../../components/BookImage';
+//services
+import {STOARGE_KEY} from '../../../services/RNAsyncStorage';
 
 type NYTBookScreenRouteProps =
   RootStackScreenProps<'SingleWolneLektury'>['route'];
@@ -27,6 +29,8 @@ const Index: React.FC<Props> = ({route}): JSX.Element => {
           priority: FastImage.priority.normal,
           cache: FastImage.cacheControl.immutable,
         }}
+        bookSource="WolneLektury"
+        storageKey={STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY}
       />
       <Details book={book} />
     </ScrollView>
