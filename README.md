@@ -1,1 +1,1 @@
-BookcaseApp lets users get familiar with New York Times hardcover fiction bestsellers, Project Gutenberg books and Wolne Lektury Books. Each book can be added to user's list of favourites.
+BookcaseApp lets users get familiar with New York Times hardcover fiction bestsellers, Project Gutenberg books and Wolne Lektury Books. Each book has its brief descrpion and book plot summary, some of them can be bought throug available links (New York Times) or downloaded for free (Wolne Lektury). Moreover each book can be added to user's list of favourites.
