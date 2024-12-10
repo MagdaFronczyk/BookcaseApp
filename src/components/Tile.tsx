@@ -19,6 +19,10 @@ import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 
 type ProjectGutenbergBooksScreenNavigationProps =
   BoottomTabScreenProps<'Project Gutenberg'>['navigation'];
+type WolneLekturyBooksScreenNavigationProps =
+  BoottomTabScreenProps<'Wolne Lektury'>['navigation'];
+type NYTBooksScreenNavigationProps =
+  BoottomTabScreenProps<'New York Times'>['navigation'];
 
 type Props = {
   book: IProjectGutenbergBook | IWolneLekturyBook | INYTBook;
@@ -35,8 +39,11 @@ const Tile: React.FC<Props> = ({
   imageSource,
   navigationDestinantion,
 }): JSX.Element | null => {
-  const navigation =
-    useNavigation<ProjectGutenbergBooksScreenNavigationProps>();
+  const navigation = useNavigation<
+    | ProjectGutenbergBooksScreenNavigationProps
+    | WolneLekturyBooksScreenNavigationProps
+    | NYTBooksScreenNavigationProps
+  >();
 
   const handleNavigation = (): void => {
     navigation.navigate(navigationDestinantion, {book: book});

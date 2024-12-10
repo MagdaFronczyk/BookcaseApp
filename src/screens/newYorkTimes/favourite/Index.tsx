@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
-import {useIsFocused} from '@react-navigation/native';
 
 import FastImage from 'react-native-fast-image';
 //types
@@ -12,23 +11,18 @@ import {getNYThardcoverFictionBestsellers} from '../../../api/newYorkTimes/getNY
 import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
 import CommonEmpty from '../../../components/CommonEmpty';
+import Tile from '../../../components/Tile.tsx';
 //styles
 import {all as styles} from '../_styles.ts';
-import {
-  getAndSetFavorites,
-  STOARGE_KEY,
-} from '../../../services/RNAsyncStorage/index.ts';
-import Tile from '../../../components/Tile.tsx';
+//utils
+import {useFavouriteNYT} from '../../../utils/useFavouriteNYT.ts';
 
 const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
     ICommonResponseWithoutTotal<INYTBook[] | null>
   >({status: status.PENDING, data: null});
-  const [favoriteBooks, setFavouriteBooks] = useState<INYTBook[]>([]);
-  const [favouriteBooksTitles, setFavouriteBooksTitles] = useState<string[]>(
-    [],
-  );
-  const isFocused = useIsFocused();
+
+  const {favouriteNYTBooks} = useFavouriteNYT(response.data);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -49,23 +43,6 @@ const Index: React.FC = (): JSX.Element => {
       }
     };
   }, [response]);
-
-  useEffect(() => {
-    getAndSetFavorites(setFavouriteBooksTitles, STOARGE_KEY.FAVOURITE_NYTBOOKS);
-  }, [isFocused]);
-
-  useEffect(() => {
-    if (response.data && favouriteBooksTitles) {
-      const favBooks: INYTBook[] = [];
-      favouriteBooksTitles.forEach(title => {
-        const favourites = response.data?.find(book => book.title === title);
-        if (favourites) {
-          favBooks.push(favourites);
-        }
-      });
-      setFavouriteBooks(favBooks);
-    }
-  }, [favouriteBooksTitles, response]);
 
   const keyExtractor = (item: INYTBook) => {
     return item.title;
@@ -100,7 +77,7 @@ const Index: React.FC = (): JSX.Element => {
 
   return (
     <FlatList
-      data={favoriteBooks}
+      data={favouriteNYTBooks}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
       ListEmptyComponent={listEmptyComponent}

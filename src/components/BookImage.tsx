@@ -30,6 +30,8 @@ import {
 type Props = {
   book: IWolneLekturyBook | IProjectGutenbergBook | INYTBook;
   imageSource: Source;
+  bookSource: string;
+  storageKey: STOARGE_KEY;
 };
 
 const INITIAL_LIKE_ICON_SCALE = 1;
@@ -38,15 +40,38 @@ export const LIKE_ICON_SIZE = moderateScale(41);
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-const Image: React.FC<Props> = ({book, imageSource}): JSX.Element => {
+const Image: React.FC<Props> = ({
+  book,
+  imageSource,
+  bookSource,
+  storageKey,
+}): JSX.Element => {
   const isFocused = useIsFocused();
   const [isLiked, setLiked] = useState<boolean>(false);
   const [favouriteTitles, setFavouriteTitles] = useState<string[]>([]);
   const likeScale = useSharedValue<number>(INITIAL_LIKE_ICON_SCALE);
 
   useEffect(() => {
-    getAndSetFavorites(setFavouriteTitles, STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY);
-  }, [isFocused]);
+    switch (bookSource) {
+      case 'WolneLektury':
+        getAndSetFavorites(
+          setFavouriteTitles,
+          STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY,
+        );
+        break;
+      case 'ProjectGutenberg':
+        getAndSetFavorites(
+          setFavouriteTitles,
+          STOARGE_KEY.FAVOURITE_PROJECT_GUTENBERG,
+        );
+        break;
+      case 'NYT':
+        getAndSetFavorites(setFavouriteTitles, STOARGE_KEY.FAVOURITE_NYTBOOKS);
+        break;
+      default:
+        break;
+    }
+  }, [isFocused, bookSource]);
 
   useEffect(() => {
     setLiked(favouriteTitles.includes(book.title));
@@ -57,12 +82,7 @@ const Image: React.FC<Props> = ({book, imageSource}): JSX.Element => {
       withTiming(END_LIKE_ICON_SCALE),
       withTiming(INITIAL_LIKE_ICON_SCALE),
     );
-    toggleLike(
-      STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY,
-      isLiked,
-      book.title,
-      setFavouriteTitles,
-    );
+    toggleLike(storageKey, isLiked, book.title, setFavouriteTitles);
   };
 
   const likeButtonAnimatedStyle = useAnimatedStyle(

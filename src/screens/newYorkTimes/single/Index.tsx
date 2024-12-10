@@ -7,6 +7,8 @@ import Details from './Details';
 //types
 import {RootStackScreenProps} from '../../../types/navigation';
 import Image from '../../../components/BookImage';
+//services
+import {STOARGE_KEY} from '../../../services/RNAsyncStorage';
 
 type NYTBookScreenRouteProps = RootStackScreenProps<'SingleNYTimes'>['route'];
 
@@ -26,6 +28,8 @@ const Index: React.FC<Props> = ({route}): JSX.Element => {
           cache: FastImage.cacheControl.immutable,
         }}
         book={book}
+        bookSource="NYT"
+        storageKey={STOARGE_KEY.FAVOURITE_NYTBOOKS}
       />
       <Details book={book} />
     </ScrollView>

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 
-import {useIsFocused} from '@react-navigation/native';
 //types
 import {
   ICommonResponseWithoutTotal,
@@ -17,23 +16,17 @@ import Tile from '../../../components/Tile.tsx';
 import CommonEmpty from '../../../components/CommonEmpty';
 //styles
 import {all as styles} from '../_style.ts';
-//services
-import {
-  getAndSetFavorites,
-  STOARGE_KEY,
-} from '../../../services/RNAsyncStorage/index.ts';
+//utils
+import {useFavouriteProjectGutenberg} from '../../../utils/useFavouriteProjectGutenberg.ts';
 
 const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
     ICommonResponseWithoutTotal<IProjectGutenbergBook[] | null>
   >({status: status.PENDING, data: null});
-  const [favoriteBooks, setFavouriteBooks] = useState<IProjectGutenbergBook[]>(
-    [],
+
+  const {favouriteBooksProjectGutenberg} = useFavouriteProjectGutenberg(
+    response.data,
   );
-  const [favouriteBooksTitles, setFavouriteBooksTitles] = useState<string[]>(
-    [],
-  );
-  const isFocused = useIsFocused();
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -54,26 +47,6 @@ const Index: React.FC = (): JSX.Element => {
       }
     };
   }, [response]);
-
-  useEffect(() => {
-    getAndSetFavorites(
-      setFavouriteBooksTitles,
-      STOARGE_KEY.FAVOURITE_PROJECT_GUTENBERG,
-    );
-  }, [isFocused]);
-
-  useEffect(() => {
-    if (response.data && favouriteBooksTitles) {
-      const favBooks: IProjectGutenbergBook[] = [];
-      favouriteBooksTitles.forEach(title => {
-        const favourites = response.data?.find(book => book.title === title);
-        if (favourites) {
-          favBooks.push(favourites);
-        }
-      });
-      setFavouriteBooks(favBooks);
-    }
-  }, [favouriteBooksTitles, response]);
 
   const keyExtractor = (item: IProjectGutenbergBook) => {
     return item.title;
@@ -104,7 +77,7 @@ const Index: React.FC = (): JSX.Element => {
 
   return (
     <FlatList
-      data={favoriteBooks}
+      data={favouriteBooksProjectGutenberg}
       keyExtractor={keyExtractor}
       renderItem={renderItem}
       ListEmptyComponent={listEmptyComponent}
