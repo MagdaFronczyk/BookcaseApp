@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   item: {
     margin: moderateScale(20),
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
   image: {width: moderateScale(40), height: moderateScale(40)},

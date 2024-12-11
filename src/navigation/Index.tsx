@@ -23,7 +23,6 @@ const Index: React.FC = (): JSX.Element => {
   appTheme.colors.background = theme.backgroundColor.white;
 
   return (
-
     <GestureHandlerRootView style={{flex: 1}}>
       <SafeAreaProvider>
         <NavigationContainer theme={appTheme}>
@@ -38,7 +37,14 @@ const Index: React.FC = (): JSX.Element => {
                 headerShown: false,
               }}
             />
-            <Stack.Screen name="WebViewScreen" component={WebViewScreen} />
+            <Stack.Screen
+              name="WebViewScreen"
+              component={WebViewScreen}
+              options={{
+                headerBackTitle: 'Back',
+                headerTintColor: theme.color.black,
+              }}
+            />
             <Stack.Group
               screenOptions={{
                 headerTitle: '',
