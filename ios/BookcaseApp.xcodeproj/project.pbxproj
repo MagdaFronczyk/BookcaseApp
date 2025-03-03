@@ -15,6 +15,13 @@
 		38C1CEDC23DDC382AC1D6B4D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		7699B88040F8A987B510C191 /* libPods-BookcaseApp-BookcaseAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-BookcaseApp-BookcaseAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		CAD38A652D75D76D00CDDC05 /* RCTCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD38A642D75D76D00CDDC05 /* RCTCalendarModule.m */; };
+		CAD38A662D75DEDE00CDDC05 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4238902D058432007BF11A /* Roboto-Bold.ttf */; };
+		CAD38A672D75DEDE00CDDC05 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4238922D058475007BF11A /* Roboto-Medium.ttf */; };
+		CAD38A682D75DEDE00CDDC05 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4238912D058464007BF11A /* Roboto-Light.ttf */; };
+		CAD38A692D75DEDE00CDDC05 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4238942D058483007BF11A /* Roboto-Thin.ttf */; };
+		CAD38A6A2D75DEDE00CDDC05 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4238932D05847C007BF11A /* Roboto-Regular.ttf */; };
+		CAD38A6B2D75DEDE00CDDC05 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA42388F2D058424007BF11A /* Roboto-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +57,8 @@
 		CA4238922D058475007BF11A /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		CA4238932D05847C007BF11A /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		CA4238942D058483007BF11A /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		CAD38A622D75D51800CDDC05 /* RCTCalendarModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTCalendarModule.h; sourceTree = "<group>"; };
+		CAD38A642D75D76D00CDDC05 /* RCTCalendarModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RCTCalendarModule.m; path = BookcaseApp/RCTCalendarModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -99,6 +108,8 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				CAD38A622D75D51800CDDC05 /* RCTCalendarModule.h */,
+				CAD38A642D75D76D00CDDC05 /* RCTCalendarModule.m */,
 			);
 			name = BookcaseApp;
 			sourceTree = "<group>";
@@ -262,6 +273,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD38A662D75DEDE00CDDC05 /* Roboto-Bold.ttf in Resources */,
+				CAD38A672D75DEDE00CDDC05 /* Roboto-Medium.ttf in Resources */,
+				CAD38A682D75DEDE00CDDC05 /* Roboto-Light.ttf in Resources */,
+				CAD38A692D75DEDE00CDDC05 /* Roboto-Thin.ttf in Resources */,
+				CAD38A6A2D75DEDE00CDDC05 /* Roboto-Regular.ttf in Resources */,
+				CAD38A6B2D75DEDE00CDDC05 /* Roboto-Black.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				38C1CEDC23DDC382AC1D6B4D /* PrivacyInfo.xcprivacy in Resources */,
@@ -414,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD38A652D75D76D00CDDC05 /* RCTCalendarModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
