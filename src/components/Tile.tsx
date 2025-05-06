@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Pressable, StyleSheet, View, Dimensions} from 'react-native';
-
+import FastImage, {Source} from 'react-native-fast-image';
+import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
 //components
 import RobotoBlack from './fonts/RobotoBlack';
@@ -14,8 +15,6 @@ import {
   IProjectGutenbergBook,
   IWolneLekturyBook,
 } from '../types/index.ts';
-import FastImage, {Source} from 'react-native-fast-image';
-import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 
 type ProjectGutenbergBooksScreenNavigationProps =
   BoottomTabScreenProps<'Project Gutenberg'>['navigation'];
@@ -33,12 +32,12 @@ type Props = {
 
 const {width} = Dimensions.get('screen');
 
-const Tile: React.FC<Props> = ({
+const Tile = memo(function Tile({
   book,
   parent,
   imageSource,
   navigationDestinantion,
-}): JSX.Element | null => {
+}: Props) {
   const navigation = useNavigation<
     | ProjectGutenbergBooksScreenNavigationProps
     | WolneLekturyBooksScreenNavigationProps
@@ -48,7 +47,6 @@ const Tile: React.FC<Props> = ({
   const handleNavigation = (): void => {
     navigation.navigate(navigationDestinantion, {book: book});
   };
-
   return (
     <Pressable
       style={styles.wrapper}
@@ -82,7 +80,7 @@ const Tile: React.FC<Props> = ({
       </RobotoBlack>
     </Pressable>
   );
-};
+});
 
 const styles = StyleSheet.create({
   wrapper: {

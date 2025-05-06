@@ -27,7 +27,7 @@ export type BottomTabParamList = {
   'New York Times': undefined;
   'Wolne Lektury': undefined;
   'Project Gutenberg': undefined;
-  Calendar: undefined;
+  Kalendarz: undefined;
 };
 
 export type BoottomTabScreenProps<T extends keyof BottomTabParamList> =

@@ -2,41 +2,41 @@ import {useIsFocused} from '@react-navigation/native';
 import {useEffect, useState} from 'react';
 
 //types
-import {IWolneLekturyBook} from '../types';
+import {IProjectGutenbergBook} from '../../types';
 //services
 import {
   getAndSetFavorites,
   STOARGE_KEY,
   toggleLike,
-} from '../services/RNAsyncStorage';
+} from '../../services/RNAsyncStorage';
 
-export const useFavouriteProjectWolneLektury = (
-  books: IWolneLekturyBook[] | null,
-  bookTitle?: IWolneLekturyBook['title'],
+export const useFavouriteProjectGutenberg = (
+  books: IProjectGutenbergBook[] | null,
+  bookTitle?: IProjectGutenbergBook['title'],
 ) => {
   const isFocused = useIsFocused();
   const [favouriteBooksTitles, setFavouriteBooksTitles] = useState<string[]>(
     [],
   );
-  const [isLikedWolneLektury, setLiked] = useState<boolean>(false);
-  const [favouriteWolneLektury, setFavouriteBooks] = useState<
-    IWolneLekturyBook[]
+  const [isLikedProjectGutenberg, setLiked] = useState<boolean>(false);
+  const [favouriteBooksProjectGutenberg, setFavouriteBooks] = useState<
+    IProjectGutenbergBook[]
   >([]);
 
   useEffect(() => {
     getAndSetFavorites(
       setFavouriteBooksTitles,
-      STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY,
+      STOARGE_KEY.FAVOURITE_PROJECT_GUTENBERG,
     );
   }, [isFocused]);
 
   useEffect(() => {
     bookTitle && setLiked(favouriteBooksTitles.includes(bookTitle));
-  }, [favouriteBooksTitles, isLikedWolneLektury, bookTitle]);
+  }, [favouriteBooksTitles, isLikedProjectGutenberg, bookTitle]);
 
   useEffect(() => {
     if (books && favouriteBooksTitles) {
-      const favBooks: IWolneLekturyBook[] = [];
+      const favBooks: IProjectGutenbergBook[] = [];
       favouriteBooksTitles.forEach(title => {
         const favourites = books.find(book => book.title === title);
         if (favourites) {
@@ -47,19 +47,19 @@ export const useFavouriteProjectWolneLektury = (
     }
   }, [favouriteBooksTitles, books]);
 
-  const handleLikeWolneLektury = async (): Promise<void> => {
+  const handleLikeProjectGutenberg = async (): Promise<void> => {
     bookTitle &&
       toggleLike(
-        STOARGE_KEY.FAVOURITE_WOLNE_LEKTURY,
-        isLikedWolneLektury,
+        STOARGE_KEY.FAVOURITE_PROJECT_GUTENBERG,
+        isLikedProjectGutenberg,
         bookTitle,
         setFavouriteBooksTitles,
       );
   };
 
   return {
-    favouriteWolneLektury,
-    isLikedWolneLektury,
-    handleLikeWolneLektury,
+    favouriteBooksProjectGutenberg,
+    isLikedProjectGutenberg,
+    handleLikeProjectGutenberg,
   };
 };

@@ -27,7 +27,7 @@ const RobotoLight: React.FC<Props> = ({
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: 'Roboto-light',
+    fontFamily: 'Roboto-Light',
   },
 });
 

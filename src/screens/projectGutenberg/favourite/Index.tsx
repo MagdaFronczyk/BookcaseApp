@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 
 //types
@@ -17,7 +17,7 @@ import CommonEmpty from '../../../components/CommonEmpty';
 //styles
 import {all as styles} from '../_style.ts';
 //utils
-import {useFavouriteProjectGutenberg} from '../../../utils/useFavouriteProjectGutenberg.ts';
+import {useFavouriteProjectGutenberg} from '../../../utils/hooks/useFavouriteProjectGutenberg.ts';
 
 const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
@@ -31,6 +31,9 @@ const Index: React.FC = (): JSX.Element => {
   useEffect(() => {
     const abortController = new AbortController();
     getProjectGutenbergBooks(setResponse, abortController);
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   useEffect(() => {
@@ -44,6 +47,7 @@ const Index: React.FC = (): JSX.Element => {
     return () => {
       if (checkAgain) {
         clearTimeout(checkAgain);
+        abortController.abort();
       }
     };
   }, [response]);
@@ -52,16 +56,17 @@ const Index: React.FC = (): JSX.Element => {
     return item.title;
   };
 
-  const renderItem = ({item}: {item: IProjectGutenbergBook}) => {
-    return (
+  const renderItem = useCallback(
+    ({item}: {item: IProjectGutenbergBook}) => (
       <Tile
         book={item}
         parent="fav"
         imageSource={require('../../../assets/icons/book.png')}
         navigationDestinantion="SingleProjectGutenberg"
       />
-    );
-  };
+    ),
+    [],
+  );
 
   const listEmptyComponent = (): JSX.Element => {
     return <CommonEmpty title="Aktualnie brak ulubionych książek." />;

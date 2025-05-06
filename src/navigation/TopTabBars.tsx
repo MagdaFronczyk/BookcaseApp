@@ -7,7 +7,7 @@ import {
   MaterialTopTabNavigationOptions,
 } from '@react-navigation/material-top-tabs';
 //utils
-import {TOP_TAB_HEIGHT} from '../utils/constatnts';
+import {TOP_TAB_HEIGHT} from '../utils/constants';
 //styles
 import {theme} from '../style/styles';
 //components

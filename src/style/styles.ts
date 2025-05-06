@@ -12,6 +12,7 @@ export const theme = {
     black: 'rgba(0, 0, 0, 1)', // #000
     darkGray: 'rgba(137, 137, 137, 1)', //#898989
     lightGray: 'rgb(192,192,192)', //#C0C0C0
+    error: 'rgb(255, 44, 44)',
   },
   backgroundColor: {
     white: 'rgba(255, 255, 255, 1)',

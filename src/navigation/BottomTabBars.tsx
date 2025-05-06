@@ -7,7 +7,7 @@ import {
 } from '@react-navigation/bottom-tabs';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
 //utils
-import {BOTTOM_TAB_HEIGHT} from '../utils/constatnts';
+import {BOTTOM_TAB_HEIGHT} from '../utils/constants';
 //styles
 import {theme} from '../style/styles';
 //components

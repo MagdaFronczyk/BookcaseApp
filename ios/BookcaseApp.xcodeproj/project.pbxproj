@@ -15,7 +15,7 @@
 		38C1CEDC23DDC382AC1D6B4D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		7699B88040F8A987B510C191 /* libPods-BookcaseApp-BookcaseAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-BookcaseApp-BookcaseAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		CAD38A652D75D76D00CDDC05 /* RCTCalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD38A642D75D76D00CDDC05 /* RCTCalendarModule.m */; };
+		CA46D9B12DCA09850061A7FB /* CalendarModule.m in Sources */ = {isa = PBXBuildFile; fileRef = CA46D9B02DCA09850061A7FB /* CalendarModule.m */; };
 		CAD38A662D75DEDE00CDDC05 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4238902D058432007BF11A /* Roboto-Bold.ttf */; };
 		CAD38A672D75DEDE00CDDC05 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4238922D058475007BF11A /* Roboto-Medium.ttf */; };
 		CAD38A682D75DEDE00CDDC05 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA4238912D058464007BF11A /* Roboto-Light.ttf */; };
@@ -57,8 +57,8 @@
 		CA4238922D058475007BF11A /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		CA4238932D05847C007BF11A /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		CA4238942D058483007BF11A /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		CAD38A622D75D51800CDDC05 /* RCTCalendarModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTCalendarModule.h; sourceTree = "<group>"; };
-		CAD38A642D75D76D00CDDC05 /* RCTCalendarModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RCTCalendarModule.m; path = BookcaseApp/RCTCalendarModule.m; sourceTree = "<group>"; };
+		CA46D9AF2DCA092A0061A7FB /* CalendarModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarModule.h; sourceTree = "<group>"; };
+		CA46D9B02DCA09850061A7FB /* CalendarModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -108,8 +108,6 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
-				CAD38A622D75D51800CDDC05 /* RCTCalendarModule.h */,
-				CAD38A642D75D76D00CDDC05 /* RCTCalendarModule.m */,
 			);
 			name = BookcaseApp;
 			sourceTree = "<group>";
@@ -147,6 +145,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				CA46D9B02DCA09850061A7FB /* CalendarModule.m */,
+				CA46D9AF2DCA092A0061A7FB /* CalendarModule.h */,
 				13B07FAE1A68108700A75B9A /* BookcaseApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* BookcaseAppTests */,
@@ -312,9 +312,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BookcaseApp/Pods-BookcaseApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BookcaseApp/Pods-BookcaseApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -373,9 +377,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BookcaseApp-BookcaseAppTests/Pods-BookcaseApp-BookcaseAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BookcaseApp-BookcaseAppTests/Pods-BookcaseApp-BookcaseAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -390,9 +398,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BookcaseApp/Pods-BookcaseApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BookcaseApp/Pods-BookcaseApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -407,9 +419,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BookcaseApp-BookcaseAppTests/Pods-BookcaseApp-BookcaseAppTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BookcaseApp-BookcaseAppTests/Pods-BookcaseApp-BookcaseAppTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -431,7 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAD38A652D75D76D00CDDC05 /* RCTCalendarModule.m in Sources */,
+				CA46D9B12DCA09850061A7FB /* CalendarModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -622,10 +638,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -694,10 +707,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
