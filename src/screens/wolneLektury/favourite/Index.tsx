@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 
 import FastImage from 'react-native-fast-image';
@@ -18,7 +18,7 @@ import CommonEmpty from '../../../components/CommonEmpty';
 //styles
 import {all as styles} from '../_styles.ts';
 //services
-import {useFavouriteProjectWolneLektury} from '../../../utils/useFavouriteWolneLektury.ts';
+import {useFavouriteProjectWolneLektury} from '../../../utils/hooks/useFavouriteWolneLektury.ts';
 
 const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
@@ -53,8 +53,8 @@ const Index: React.FC = (): JSX.Element => {
     return item.title;
   };
 
-  const renderItem = ({item}: {item: IWolneLekturyBook}) => {
-    return (
+  const renderItem = useCallback(
+    ({item}: {item: IWolneLekturyBook}) => (
       <Tile
         book={item}
         parent="fav"
@@ -65,8 +65,9 @@ const Index: React.FC = (): JSX.Element => {
         }}
         navigationDestinantion="SingleWolneLektury"
       />
-    );
-  };
+    ),
+    [],
+  );
 
   const listEmptyComponent = (): JSX.Element => {
     return <CommonEmpty title="Aktualnie brak ulubionych książek." />;

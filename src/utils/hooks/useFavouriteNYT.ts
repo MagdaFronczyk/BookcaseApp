@@ -2,41 +2,36 @@ import {useIsFocused} from '@react-navigation/native';
 import {useEffect, useState} from 'react';
 
 //types
-import {IProjectGutenbergBook} from '../types';
+import {INYTBook} from '../../types';
 //services
 import {
   getAndSetFavorites,
   STOARGE_KEY,
   toggleLike,
-} from '../services/RNAsyncStorage';
+} from '../../services/RNAsyncStorage';
 
-export const useFavouriteProjectGutenberg = (
-  books: IProjectGutenbergBook[] | null,
-  bookTitle?: IProjectGutenbergBook['title'],
+export const useFavouriteNYT = (
+  books: INYTBook[] | null,
+  bookTitle?: INYTBook['title'],
 ) => {
   const isFocused = useIsFocused();
   const [favouriteBooksTitles, setFavouriteBooksTitles] = useState<string[]>(
     [],
   );
-  const [isLikedProjectGutenberg, setLiked] = useState<boolean>(false);
-  const [favouriteBooksProjectGutenberg, setFavouriteBooks] = useState<
-    IProjectGutenbergBook[]
-  >([]);
+  const [isLikedNYT, setLiked] = useState<boolean>(false);
+  const [favouriteNYTBooks, setFavouriteBooks] = useState<INYTBook[]>([]);
 
   useEffect(() => {
-    getAndSetFavorites(
-      setFavouriteBooksTitles,
-      STOARGE_KEY.FAVOURITE_PROJECT_GUTENBERG,
-    );
+    getAndSetFavorites(setFavouriteBooksTitles, STOARGE_KEY.FAVOURITE_NYTBOOKS);
   }, [isFocused]);
 
   useEffect(() => {
     bookTitle && setLiked(favouriteBooksTitles.includes(bookTitle));
-  }, [favouriteBooksTitles, isLikedProjectGutenberg, bookTitle]);
+  }, [favouriteBooksTitles, isLikedNYT, bookTitle]);
 
   useEffect(() => {
     if (books && favouriteBooksTitles) {
-      const favBooks: IProjectGutenbergBook[] = [];
+      const favBooks: INYTBook[] = [];
       favouriteBooksTitles.forEach(title => {
         const favourites = books.find(book => book.title === title);
         if (favourites) {
@@ -47,19 +42,19 @@ export const useFavouriteProjectGutenberg = (
     }
   }, [favouriteBooksTitles, books]);
 
-  const handleLikeProjectGutenberg = async (): Promise<void> => {
+  const handleLikeWolneLektury = async (): Promise<void> => {
     bookTitle &&
       toggleLike(
-        STOARGE_KEY.FAVOURITE_PROJECT_GUTENBERG,
-        isLikedProjectGutenberg,
+        STOARGE_KEY.FAVOURITE_NYTBOOKS,
+        isLikedNYT,
         bookTitle,
         setFavouriteBooksTitles,
       );
   };
 
   return {
-    favouriteBooksProjectGutenberg,
-    isLikedProjectGutenberg,
-    handleLikeProjectGutenberg,
+    favouriteNYTBooks,
+    isLikedNYT,
+    handleLikeWolneLektury,
   };
 };

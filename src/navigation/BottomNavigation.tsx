@@ -33,7 +33,7 @@ const BottomNavigation: React.FC = (): JSX.Element => {
         name="Project Gutenberg"
         component={ProjectGutenbergNavigation}
       />
-      <Tab.Screen name="Calendar" component={Calendar} />
+      <Tab.Screen name="Kalendarz" component={Calendar} />
     </Tab.Navigator>
   );
 };

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 
 //types
@@ -25,6 +25,9 @@ const Index: React.FC = (): JSX.Element => {
   useEffect(() => {
     const abortController = new AbortController();
     getProjectGutenbergBooks(setResponse, abortController);
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   useEffect(() => {
@@ -38,6 +41,7 @@ const Index: React.FC = (): JSX.Element => {
     return () => {
       if (checkAgain) {
         clearTimeout(checkAgain);
+        abortController.abort();
       }
     };
   }, [response]);
@@ -46,17 +50,17 @@ const Index: React.FC = (): JSX.Element => {
     return item.title;
   };
 
-  const renderItem = ({item}: {item: IProjectGutenbergBook}) => {
-    return (
+  const renderItem = useCallback(
+    ({item}: {item: IProjectGutenbergBook}) => (
       <Tile
         book={item}
-        books={response.data}
         parent="all"
         imageSource={require('../../../assets/icons/book.png')}
         navigationDestinantion="SingleProjectGutenberg"
       />
-    );
-  };
+    ),
+    [],
+  );
 
   const listEmptyComponent = (): JSX.Element => {
     return (

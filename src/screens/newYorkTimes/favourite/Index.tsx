@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 
 import FastImage from 'react-native-fast-image';
@@ -15,7 +15,7 @@ import Tile from '../../../components/Tile.tsx';
 //styles
 import {all as styles} from '../_styles.ts';
 //utils
-import {useFavouriteNYT} from '../../../utils/useFavouriteNYT.ts';
+import {useFavouriteNYT} from '../../../utils/hooks/useFavouriteNYT.ts';
 
 const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
@@ -27,6 +27,9 @@ const Index: React.FC = (): JSX.Element => {
   useEffect(() => {
     const abortController = new AbortController();
     getNYThardcoverFictionBestsellers(setResponse, abortController);
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   useEffect(() => {
@@ -40,6 +43,7 @@ const Index: React.FC = (): JSX.Element => {
     return () => {
       if (checkAgain) {
         clearTimeout(checkAgain);
+        abortController.abort();
       }
     };
   }, [response]);
@@ -48,8 +52,8 @@ const Index: React.FC = (): JSX.Element => {
     return item.title;
   };
 
-  const renderItem = ({item}: {item: INYTBook}) => {
-    return (
+  const renderItem = useCallback(
+    ({item}: {item: INYTBook}) => (
       <Tile
         book={item}
         parent="fav"
@@ -60,8 +64,9 @@ const Index: React.FC = (): JSX.Element => {
         }}
         navigationDestinantion="SingleNYTimes"
       />
-    );
-  };
+    ),
+    [],
+  );
 
   const listEmptyComponent = (): JSX.Element => {
     return <CommonEmpty title="Aktualnie brak ulubionych książek." />;

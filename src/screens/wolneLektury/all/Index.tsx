@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList} from 'react-native';
 
 import FastImage from 'react-native-fast-image';
@@ -45,8 +45,8 @@ const Index: React.FC = (): JSX.Element => {
     return item.title;
   };
 
-  const renderItem = ({item}: {item: IWolneLekturyBook}) => {
-    return (
+  const renderItem = useCallback(
+    ({item}: {item: IWolneLekturyBook}) => (
       <Tile
         book={item}
         parent="all"
@@ -57,8 +57,9 @@ const Index: React.FC = (): JSX.Element => {
         }}
         navigationDestinantion="SingleWolneLektury"
       />
-    );
-  };
+    ),
+    [],
+  );
 
   const listEmptyComponent = (): JSX.Element => {
     return (
