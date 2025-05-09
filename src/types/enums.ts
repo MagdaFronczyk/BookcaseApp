@@ -10,3 +10,12 @@ export enum panelModalScreenNames {
   SIGN_IN = 'signIn',
   RESET_PASSWORD = 'resetPassword',
 }
+
+export enum listModalScreenNames {
+  ADD_LIST = 'addList',
+  EXPANDED_LIST = 'expanded_list',
+}
+
+export enum userListsCollections {
+  USERS_LISTS = 'users_lists',
+}

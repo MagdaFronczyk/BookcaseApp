@@ -12,7 +12,7 @@ import {BOTTOM_TAB_HEIGHT} from '../utils/constants';
 import {theme} from '../style/styles';
 //components
 import RobotoMedium from '../components/fonts/RobotoMedium';
-import BookIcon from '../components/BookIcon';
+import BookIcon from '../components/icons/BookIcon';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const BottomTabBars: React.FC<BottomTabBarProps> = ({

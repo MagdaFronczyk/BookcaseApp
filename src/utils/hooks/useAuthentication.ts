@@ -6,7 +6,7 @@ import {getAuth} from '@react-native-firebase/auth';
 import {
   validateEmail,
   translateFirebaseErrors,
-} from '../../utils/authentication';
+} from '../authentication';
 //types
 import {
   IPanelAuthForm,

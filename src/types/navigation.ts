@@ -6,7 +6,7 @@ import {StackScreenProps} from '@react-navigation/stack';
 import {INYTBook} from './newYorkTimes';
 import {IWolneLekturyBook} from './wolneLektury';
 import {IProjectGutenbergBook} from './index';
-import { panelModalScreenNames } from './enums';
+import {listModalScreenNames, panelModalScreenNames} from './enums';
 
 export type RootStackParamList = {
   DrawerNavigation: undefined;
@@ -20,6 +20,12 @@ export type RootStackParamList = {
   AuthenticationModals: {
     screen: panelModalScreenNames;
   };
+  UserListsModals: {
+    screen: listModalScreenNames;
+    listId?: string;
+    listName?: string;
+  };
+
   Informacje: undefined;
   Kontakt: undefined;
   Kalendarz: undefined;

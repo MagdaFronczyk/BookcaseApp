@@ -13,6 +13,7 @@ import Information from '../screens/information/Index';
 import Contact from '../screens/contact/Index';
 import Calendar from '../screens/calendar/Index';
 import AuthModalSwitcher from '../screens/panel/account/authetntication/AuthModalSwitcher';
+import ListsModalSwitcher from '../screens/panel/lists/ListsModalSwitcher';
 //types
 import {RootStackParamList} from '../types/navigation';
 import WebViewScreen from '../components/webView/WebViewScreen';
@@ -69,6 +70,10 @@ const Index: React.FC = (): JSX.Element => {
               <Stack.Screen
                 name="AuthenticationModals"
                 component={AuthModalSwitcher}
+              />
+              <Stack.Screen
+                name="UserListsModals"
+                component={ListsModalSwitcher}
               />
             </Stack.Group>
             <Stack.Group
