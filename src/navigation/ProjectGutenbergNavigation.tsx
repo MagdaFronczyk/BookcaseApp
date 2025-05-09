@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   createMaterialTopTabNavigator,
   MaterialTopTabBarProps,
@@ -12,15 +11,12 @@ import TopTabBars from './TopTabBars';
 
 //types
 import {
-  ProjectGutenbergNavigationStackParamList,
   ProjectGutenbergTabParamList,
 } from '../types/navigation';
 
 const Tab = createMaterialTopTabNavigator<ProjectGutenbergTabParamList>();
-const Stack =
-  createNativeStackNavigator<ProjectGutenbergNavigationStackParamList>();
 
-const ProjectGutenbergTopTabNavigation: React.FC = (): JSX.Element => {
+const ProjectGutenbergNavigation: React.FC = (): JSX.Element => {
   const renderTopBarComponent = (
     props: MaterialTopTabBarProps,
   ): JSX.Element => {
@@ -40,20 +36,6 @@ const ProjectGutenbergTopTabNavigation: React.FC = (): JSX.Element => {
         options={{title: 'Ulubione'}}
       />
     </Tab.Navigator>
-  );
-};
-
-const ProjectGutenbergNavigation: React.FC = (): JSX.Element => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="ProjectGutenbergNavigation"
-        component={ProjectGutenbergTopTabNavigation}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack.Navigator>
   );
 };
 

@@ -2,6 +2,11 @@ import {status} from './enums';
 export type * from './newYorkTimes';
 export type * from './wolneLektury';
 export type * from './projectGutenberg';
+export type * from './calendar';
+export type * from './navigation';
+export type * from './projectGutenberg';
+export type * from './panel';
+export type * from './permissions';
 
 export interface ICommonResponse<dataType> {
   status: status;

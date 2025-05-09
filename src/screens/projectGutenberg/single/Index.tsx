@@ -21,7 +21,7 @@ const Index: React.FC<Props> = ({route}): JSX.Element => {
   return (
     <ScrollView>
       <Image
-        imageSource={require('../../../assets/icons/book.png')}
+        imageSource={require('../../../assets/icons/book_icon.png')}
         book={book}
         bookSource="ProjectGutenberg"
         storageKey={STOARGE_KEY.FAVOURITE_PROJECT_GUTENBERG}

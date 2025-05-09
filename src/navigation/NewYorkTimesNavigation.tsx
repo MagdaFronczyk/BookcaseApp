@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {
   createMaterialTopTabNavigator,
   MaterialTopTabBarProps,
@@ -10,16 +9,11 @@ import AllNYTimes from '../screens/newYorkTimes/all/Index';
 import FavNYTimes from '../screens/newYorkTimes/favourite/Index';
 import TopTabBars from './TopTabBars';
 //types
-import {
-  NewYorkTimesNavigationStackParamList,
-  NewYorkTimesNavigationTabParamList,
-} from '../types/navigation';
+import {NewYorkTimesNavigationTabParamList} from '../types/navigation';
 
 const Tab = createMaterialTopTabNavigator<NewYorkTimesNavigationTabParamList>();
-const Stack =
-  createNativeStackNavigator<NewYorkTimesNavigationStackParamList>();
 
-const NYTimesTopTabNavigation: React.FC = (): JSX.Element => {
+const NYTimesNavigation: React.FC = (): JSX.Element => {
   const renderTopBarComponent = (
     props: MaterialTopTabBarProps,
   ): JSX.Element => {
@@ -39,20 +33,6 @@ const NYTimesTopTabNavigation: React.FC = (): JSX.Element => {
         options={{title: 'Ulubione'}}
       />
     </Tab.Navigator>
-  );
-};
-
-const NYTimesNavigation: React.FC = (): JSX.Element => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="NewYorkTimesNavigation"
-        component={NYTimesTopTabNavigation}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack.Navigator>
   );
 };
 

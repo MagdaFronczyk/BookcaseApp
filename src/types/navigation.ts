@@ -6,6 +6,7 @@ import {StackScreenProps} from '@react-navigation/stack';
 import {INYTBook} from './newYorkTimes';
 import {IWolneLekturyBook} from './wolneLektury';
 import {IProjectGutenbergBook} from './index';
+import { panelModalScreenNames } from './enums';
 
 export type RootStackParamList = {
   DrawerNavigation: undefined;
@@ -16,8 +17,12 @@ export type RootStackParamList = {
     title: INYTBook['buy_links'][number]['name'] | 'Wolne Lektury';
     url: INYTBook['buy_links'][number]['url'] | IWolneLekturyBook['url'];
   };
+  AuthenticationModals: {
+    screen: panelModalScreenNames;
+  };
   Informacje: undefined;
   Kontakt: undefined;
+  Kalendarz: undefined;
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
@@ -27,7 +32,7 @@ export type BottomTabParamList = {
   'New York Times': undefined;
   'Wolne Lektury': undefined;
   'Project Gutenberg': undefined;
-  Kalendarz: undefined;
+  Panel: undefined;
 };
 
 export type BoottomTabScreenProps<T extends keyof BottomTabParamList> =
@@ -36,17 +41,9 @@ export type BoottomTabScreenProps<T extends keyof BottomTabParamList> =
     RootStackScreenProps<keyof RootStackParamList>
   >;
 
-export type NewYorkTimesNavigationStackParamList = {
-  NewYorkTimesNavigation: undefined;
-};
-
 export type NewYorkTimesNavigationTabParamList = {
   AllNYTimes: undefined;
   FavoriteNYTimes: undefined;
-};
-
-export type WolneLekturyNavigationStackParamList = {
-  WolneLekturyNavigation: undefined;
 };
 
 export type WolneLekturyTabParamList = {
@@ -54,13 +51,9 @@ export type WolneLekturyTabParamList = {
   FavoriteWolneLektury: undefined;
 };
 
-export type ProjectGutenbergNavigationStackParamList = {
-  ProjectGutenbergNavigation: undefined;
-};
-
-export type ProjectGutenbergTabParamList = {
-  AllProjectGutenberg: undefined;
-  FavoriteProjectGutenberg: undefined;
+export type PanelTabParamList = {
+  Account: undefined;
+  Lists: undefined;
 };
 
 export type DrawerNavigationParamList = {

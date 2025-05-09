@@ -61,7 +61,7 @@ const Index: React.FC = (): JSX.Element => {
       <Tile
         book={item}
         parent="fav"
-        imageSource={require('../../../assets/icons/book.png')}
+        imageSource={require('../../../assets/icons/book_icon.png')}
         navigationDestinantion="SingleProjectGutenberg"
       />
     ),
