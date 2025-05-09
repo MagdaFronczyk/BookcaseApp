@@ -1,5 +1,6 @@
 import React from 'react';
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
+import {HeaderBackButton} from '@react-navigation/elements';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -10,6 +11,8 @@ import SingleWolneLektury from '../screens/wolneLektury/single/Index';
 import DrawerNavigation from './DrawerNavigation';
 import Information from '../screens/information/Index';
 import Contact from '../screens/contact/Index';
+import Calendar from '../screens/calendar/Index';
+import AuthModalSwitcher from '../screens/panel/account/authetntication/AuthModalSwitcher';
 //types
 import {RootStackParamList} from '../types/navigation';
 import WebViewScreen from '../components/webView/WebViewScreen';
@@ -23,12 +26,13 @@ const Index: React.FC = (): JSX.Element => {
   appTheme.colors.background = theme.backgroundColor.white;
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+    <GestureHandlerRootView>
       <SafeAreaProvider>
         <NavigationContainer theme={appTheme}>
           <Stack.Navigator
             screenOptions={{
               headerTitleAlign: 'center',
+              headerBackButtonDisplayMode: 'minimal',
             }}>
             <Stack.Screen
               name="DrawerNavigation"
@@ -46,9 +50,30 @@ const Index: React.FC = (): JSX.Element => {
               }}
             />
             <Stack.Group
+              screenOptions={({navigation}) => ({
+                headerShown: true,
+                presentation: 'containedModal',
+                animation: 'fade',
+                // eslint-disable-next-line react/no-unstable-nested-components
+                headerLeft: props => (
+                  <HeaderBackButton
+                    {...props}
+                    onPress={() => navigation.goBack()}
+                    label=""
+                    allowFontScaling={true}
+                    pressColor="black"
+                    style={{}}
+                  />
+                ),
+              })}>
+              <Stack.Screen
+                name="AuthenticationModals"
+                component={AuthModalSwitcher}
+              />
+            </Stack.Group>
+            <Stack.Group
               screenOptions={{
-                headerTitle: '',
-                headerBackTitle: 'Back',
+                headerBackTitle: '',
                 headerTintColor: theme.color.black,
               }}>
               <Stack.Screen
@@ -62,6 +87,7 @@ const Index: React.FC = (): JSX.Element => {
               />
               <Stack.Screen name="Informacje" component={Information} />
               <Stack.Screen name="Kontakt" component={Contact} />
+              <Stack.Screen name="Kalendarz" component={Calendar} />
             </Stack.Group>
           </Stack.Navigator>
         </NavigationContainer>

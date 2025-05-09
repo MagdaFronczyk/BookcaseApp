@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.0",
+    "@react-native-firebase/app": "^22.1.0",
+    "@react-native-firebase/auth": "^22.1.0",
     "@react-native-masked-view/masked-view": "^0.3.2",
     "@react-native/gradle-plugin": "^0.76.3",
     "@react-navigation/bottom-tabs": "^7.0.14",
@@ -42,6 +44,7 @@
     "react-native-screens": "^4.3.0",
     "react-native-size-matters": "^0.4.2",
     "react-native-svg": "^15.9.0",
+    "react-native-toast-message": "^2.3.0",
     "react-native-webview": "^13.12.5"
   },
   "devDependencies": {

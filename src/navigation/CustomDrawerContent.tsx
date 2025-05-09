@@ -16,6 +16,10 @@ const CustomDrawerContent: React.FC<Props> = ({navigation}): JSX.Element => {
     navigation.navigate('Kontakt');
     navigation.closeDrawer();
   };
+  const handleNavigateToKalndarz = (): void => {
+    navigation.navigate('Kalendarz');
+    navigation.closeDrawer();
+  };
 
   const handleNavigateToInformacje = (): void => {
     navigation.navigate('Informacje');
@@ -44,7 +48,7 @@ const CustomDrawerContent: React.FC<Props> = ({navigation}): JSX.Element => {
       accessibilityHint: 'przenosi do strony informacji',
       onPress: handleNavigateToInformacje,
       title: 'Informacje',
-      imageSource: require('../assets/icons/book.png'),
+      imageSource: require('../assets/icons/book_icon.png'),
     },
     {
       accessibilityLabel: 'przejdź do strony kontaktu',
@@ -52,6 +56,13 @@ const CustomDrawerContent: React.FC<Props> = ({navigation}): JSX.Element => {
       onPress: handleNavigateToKontakt,
       title: 'Kontakt',
       imageSource: require('../assets/icons/contact_icon.png'),
+    },
+    {
+      accessibilityLabel: 'przejdź do strony Kalendarza',
+      accessibilityHint: 'przenosi do strony Kalendarza',
+      onPress: handleNavigateToKalndarz,
+      title: 'Kalendarz',
+      imageSource: require('../assets/icons/calendar_icon.png'),
     },
     {
       accessibilityLabel: 'przejdź do strony github',

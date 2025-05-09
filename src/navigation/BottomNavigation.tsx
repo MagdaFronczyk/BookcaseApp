@@ -9,7 +9,7 @@ import NewYorkTimesNavigation from './NewYorkTimesNavigation';
 import WolneLekturyNavigation from './WolneLekturyNaviagtion';
 import ProjectGutenbergNavigation from './ProjectGutenbergNavigation';
 import BottomTabBars from './BottomTabBars';
-import Calendar from '../screens/calendar/Index';
+import Panel from './PanelNavigation';
 //types
 import {BottomTabParamList} from '../types/navigation';
 
@@ -33,7 +33,7 @@ const BottomNavigation: React.FC = (): JSX.Element => {
         name="Project Gutenberg"
         component={ProjectGutenbergNavigation}
       />
-      <Tab.Screen name="Kalendarz" component={Calendar} />
+      <Tab.Screen name="Panel" component={Panel} />
     </Tab.Navigator>
   );
 };
