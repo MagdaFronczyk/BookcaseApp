@@ -32,5 +32,9 @@ yarn start --reset-cache
 open Xcode and run application on chosen device
 ```
 
+## Debug
 
+Aplikacja wykorzystuje bibliotekę Reactotron do obserwacji API response, zustand state oraz async storage.
+
+1. [Reactotron - instalacja](https://docs.infinite.red/reactotron/)
 
