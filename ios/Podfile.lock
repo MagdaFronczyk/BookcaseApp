@@ -2665,6 +2665,8 @@ PODS:
     - Yoga
   - react-native-drop-shadow (1.0.3):
     - React
+  - react-native-netinfo (11.4.1):
+    - React-Core
   - react-native-pager-view (6.7.1):
     - DoubleConversion
     - glog
@@ -3403,6 +3405,7 @@ DEPENDENCIES:
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
   - react-native-drop-shadow (from `../node_modules/react-native-drop-shadow`)
+  - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -3550,6 +3553,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
   react-native-drop-shadow:
     :path: "../node_modules/react-native-drop-shadow"
+  react-native-netinfo:
+    :path: "../node_modules/@react-native-community/netinfo"
   react-native-pager-view:
     :path: "../node_modules/react-native-pager-view"
   react-native-safe-area-context:
@@ -3693,6 +3698,7 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 9343a5c14536d4463c80f09a960653d754daae21
   React-microtasksnativemodule: c7cafd8f4470cf8a4578ee605daa4c74d3278bf8
   react-native-drop-shadow: aeb76e4b46c09924b4a8ee3d454dd00fdb5c62d9
+  react-native-netinfo: cec9c4e86083cb5b6aba0e0711f563e2fbbff187
   react-native-pager-view: 846888dedffe4d2a4bc3d98f45b08d86537a7635
   react-native-safe-area-context: 85b5cac157862cff5cabe0d420da8197ac139da1
   react-native-webview: be6b8a2604139fd8bad46952fc71aec3302fe490

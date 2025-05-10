@@ -18,6 +18,8 @@ import CommonEmpty from '../../../components/CommonEmpty';
 import {all as styles} from '../_style.ts';
 //utils
 import {useFavouriteProjectGutenberg} from '../../../utils/hooks/useFavouriteProjectGutenberg.ts';
+//images
+import bookPlaceholder from '../../../assets/icons/book_gutenberg_icon.png';
 
 const Index: React.FC = (): JSX.Element => {
   const [response, setResponse] = useState<
@@ -61,7 +63,7 @@ const Index: React.FC = (): JSX.Element => {
       <Tile
         book={item}
         parent="fav"
-        imageSource={require('../../../assets/icons/book_icon.png')}
+        imageSource={bookPlaceholder}
         navigationDestinantion="SingleProjectGutenberg"
       />
     ),

@@ -78,6 +78,7 @@ const Index: React.FC = (): JSX.Element => {
             </Stack.Group>
             <Stack.Group
               screenOptions={{
+                headerTitle: '',
                 headerBackTitle: '',
                 headerTintColor: theme.color.black,
               }}>

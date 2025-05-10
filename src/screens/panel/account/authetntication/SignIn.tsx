@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 import React, {useState, useEffect, useMemo, useCallback} from 'react';
 import {View} from 'react-native';
 
@@ -73,7 +74,7 @@ const SignIn: React.FC = (): React.JSX.Element => {
         handler: handleSignIn,
         accLabel: 'Kliknij, aby się zalogować',
         accHint: 'Po kliknięciu rozpoczniesz proces logowania.',
-        borderColor: 'red',
+        borderColor: theme.backgroundColor.black,
         backgroundColor: theme.backgroundColor.black,
         titleColor: theme.color.white,
         icon: null,
@@ -125,11 +126,10 @@ const SignIn: React.FC = (): React.JSX.Element => {
         align="column"
       />
       <View style={common.errorWrapper}>
-        {errors.length
-          ? errors.map((error: string) => {
-              return <CommonPanelError key={error} error={error} />;
-            })
-          : null}
+        {errors.length &&
+          errors.map((error: string) => {
+            return <CommonPanelError key={error} error={error} />;
+          })}
       </View>
     </View>
   );

@@ -14,7 +14,7 @@ const CommonPanelError: React.FC<Props> = ({error}): React.JSX.Element => {
   return (
     <RobotoRegular
       style={styles.text}
-      color={theme.color.black}
+      color={theme.color.error}
       size={theme.fontSize.fifteen}>
       {error}
     </RobotoRegular>

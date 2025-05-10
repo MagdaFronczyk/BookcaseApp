@@ -7,7 +7,7 @@ import RobotoLight from '../../components/fonts/RobotoLight';
 import {theme} from '../../style/styles';
 import {intro as styles} from './_styles';
 
-const Intro = () => {
+const Intro: React.FC = (): JSX.Element => {
   return (
     <>
       <RobotoBold

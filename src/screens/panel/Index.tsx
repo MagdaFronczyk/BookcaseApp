@@ -22,7 +22,6 @@ const Index: React.FC = (): React.JSX.Element => {
     if (user && user.uid) {
       return <Account />;
     }
-
     return <Authentication />;
   }, [user, initializing]);
 
