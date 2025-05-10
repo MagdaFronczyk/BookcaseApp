@@ -18,4 +18,5 @@ export enum listModalScreenNames {
 
 export enum userListsCollections {
   USERS_LISTS = 'users_lists',
+  USERS_BOOKS = 'users_books',
 }

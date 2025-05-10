@@ -2,6 +2,7 @@ import React from 'react';
 import {Pressable, View} from 'react-native';
 
 import {scale} from 'react-native-size-matters';
+import {useSelector} from 'react-redux';
 //components
 import RobotoBold from '../../../../components/fonts/RobotoBold.tsx';
 import AddIcon from '../../../../components/icons/AddIcon.tsx';
@@ -10,6 +11,10 @@ import {useFirebaseUser} from '../../../../utils/hooks/index.ts';
 //styles
 import {addListButton as styles} from './_styles.ts';
 import {theme} from '../../../../style/styles.ts';
+//utils
+import {showToastWithTitle} from '../../../../utils/toasts/index.ts';
+//redux
+import {RootState} from '../../../../services/Redux/store.ts';
 
 const ADD_ICON_SIZE = scale(24);
 
@@ -19,8 +24,18 @@ type Props = {
 
 const AddListButton: React.FC<Props> = ({handler}): React.JSX.Element => {
   const {user} = useFirebaseUser();
+  const isConnected = useSelector(
+    (state: RootState) => state.internetConnection.isConnected,
+  );
 
   const handleAddList = (): void => {
+    if (!isConnected) {
+      showToastWithTitle(
+        'Jesteś OFFLINE',
+        'Akcja możliwa po przywróceniu połączenia internetowego.',
+      );
+      return;
+    }
     handler();
   };
   return (

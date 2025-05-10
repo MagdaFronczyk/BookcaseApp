@@ -14,6 +14,8 @@ import CommonError from '../../../components/CommonError';
 import CommonLoading from '../../../components/CommonLoading';
 import CommonEmpty from '../../../components/CommonEmpty';
 import Tile from '../../../components/Tile.tsx';
+//images
+import bookPlaceholder from '../../../assets/icons/book_gutenberg_icon.png';
 //styles
 import {all as styles} from '../_style.ts';
 
@@ -55,7 +57,7 @@ const Index: React.FC = (): JSX.Element => {
       <Tile
         book={item}
         parent="all"
-        imageSource={require('../../../assets/icons/book_icon.png')}
+        imageSource={bookPlaceholder}
         navigationDestinantion="SingleProjectGutenberg"
       />
     ),

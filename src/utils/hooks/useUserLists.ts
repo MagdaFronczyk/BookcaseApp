@@ -29,7 +29,7 @@ export const useUserLists = () => {
       const q = query(LISTS_COLLECTION_REF, where('ownerUid', '==', user.uid));
       const unsubscribe = onSnapshot(q, querySnapshot => {
         const userListsData: IUserList[] = [];
-        if (querySnapshot && !querySnapshot.empty) {
+        if (querySnapshot && !querySnapshot?.empty) {
           querySnapshot.forEach(list => {
             userListsData.push({
               createdAt: list.data().createdAt,

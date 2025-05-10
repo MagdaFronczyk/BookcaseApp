@@ -1,19 +1,14 @@
-import {useCallback, useMemo, useState} from 'react';
+import {useCallback, useEffect, useMemo, useState} from 'react';
 
 import {useNavigation} from '@react-navigation/native';
 import {getAuth} from '@react-native-firebase/auth';
 //helpers
-import {
-  validateEmail,
-  translateFirebaseErrors,
-} from '../authentication';
+import {validateEmail, translateFirebaseErrors} from '../authentication';
 //types
-import {
-  IPanelAuthForm,
-  panelAuthErrors,
-  RootStackScreenProps,
-} from '../../types';
+import {IPanelAuthForm, RootStackScreenProps} from '../../types';
 import {panelModalScreenNames} from '../../types/enums';
+//const
+import {panelAuthErrors} from '../../utils/constants';
 
 const MIN_EMAIL_LEN = 3;
 const MIN_PASS_LEN = 0;
@@ -40,6 +35,10 @@ export const useAuthentication = (form: IPanelAuthForm) => {
       isConfPassDifferent,
     };
   }, [form]);
+
+  useEffect(() => {
+    console.log(panelAuthErrors);
+  }, [panelAuthErrors]);
 
   const handleSignUp = useCallback(() => {
     setErrors([]);

@@ -120,11 +120,10 @@ const SignIn: React.FC = (): React.JSX.Element => {
         align="column"
       />
       <View style={common.errorWrapper}>
-        {errors.length
-          ? errors.map((error: string) => {
-              return <CommonPanelError key={error} error={error} />;
-            })
-          : null}
+        {errors.length &&
+          errors.map((error: string) => {
+            return <CommonPanelError key={error} error={error} />;
+          })}
       </View>
     </View>
   );

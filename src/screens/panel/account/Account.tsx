@@ -1,28 +1,28 @@
-import React, {useCallback, useMemo} from 'react';
-import {View} from 'react-native';
+import React, {useCallback, useMemo} from 'react'
+import {View} from 'react-native'
 
 //components
-import AccountHeader from './AccountHeader';
-import CommonPanelButton from '../_common/CommonPanelButton';
+import AccountHeader from './AccountHeader'
+import CommonPanelButton from '../_common/CommonPanelButton'
 //helpers
-import {useFirebaseUser} from '../../../utils/hooks/useFirebaseUser';
-import {deleteUserAccount} from '../../../utils/authentication/deleteUserAccount';
-import {signOut} from '../../../utils/authentication/signOut';
+import {useFirebaseUser} from '../../../utils/hooks/useFirebaseUser'
+import {deleteUserAccount} from '../../../utils/authentication/deleteUserAccount'
+import {signOut} from '../../../utils/authentication/signOut'
 //styles
-import {account as styles} from './_styles';
-import {theme} from '../../../style/styles';
+import {account as styles} from './_styles'
+import {theme} from '../../../style/styles'
 //types
-import {IPanelButtonData} from '../../../types/index';
+import {IPanelButtonData} from '../../../types/index'
 
 const User: React.FC = (): React.JSX.Element => {
-  const {user} = useFirebaseUser();
+  const {user} = useFirebaseUser()
 
   const handleDeleteUserAccount = useCallback((): void => {
     if (user) {
-      deleteUserAccount(user);
+      deleteUserAccount(user)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deleteUserAccount, user]);
+  }, [deleteUserAccount, user])
 
   const screenButtonsData: IPanelButtonData[] = useMemo(() => {
     return [
@@ -46,8 +46,8 @@ const User: React.FC = (): React.JSX.Element => {
         titleColor: theme.color.black,
         icon: null,
       },
-    ];
-  }, [handleDeleteUserAccount]);
+    ]
+  }, [handleDeleteUserAccount])
 
   return (
     <View style={styles.container}>
@@ -59,10 +59,10 @@ const User: React.FC = (): React.JSX.Element => {
             buttonData={button}
             align="column"
           />
-        );
+        )
       })}
     </View>
-  );
-};
+  )
+}
 
-export default User;
+export default User

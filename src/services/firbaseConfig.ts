@@ -7,3 +7,8 @@ export const LISTS_COLLECTION_REF = collection(
   DB,
   userListsCollections.USERS_LISTS,
 );
+
+export const BOOKS_COLLECTION_REF = collection(
+  DB,
+  userListsCollections.USERS_BOOKS,
+);

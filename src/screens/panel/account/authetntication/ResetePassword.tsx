@@ -85,11 +85,10 @@ const ResetPassword: React.FC = (): React.JSX.Element => {
         align={'column'}
       />
       <View style={styles.errorWrapper}>
-        {errors.length
-          ? errors.map(error => {
-              return <CommonPanelError key={error} error={error} />;
-            })
-          : null}
+        {errors.length &&
+          errors.map(error => {
+            return <CommonPanelError key={error} error={error} />;
+          })}
       </View>
     </View>
   );

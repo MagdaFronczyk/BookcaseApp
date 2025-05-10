@@ -2,7 +2,7 @@ import React, {useMemo} from 'react';
 
 //components
 import AddList from './addList/Index';
-import ExpandedList from './expandednList/Index';
+import ExpandedList from './expandedList/Index';
 import Error from '../../../components/CommonError';
 //types
 import {listModalScreenNames} from '../../../types/enums';
