@@ -109,7 +109,7 @@ const ExpandedListHeader: React.FC<Props> = ({
           <RobotoMedium
             color={theme.color.black}
             size={theme.fontSize.thirteen}>
-            usuń playlistę
+            usuń listę
           </RobotoMedium>
         </Pressable>
       </View>
