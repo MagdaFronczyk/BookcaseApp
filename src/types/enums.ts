@@ -14,6 +14,7 @@ export enum panelModalScreenNames {
 export enum listModalScreenNames {
   ADD_LIST = 'addList',
   EXPANDED_LIST = 'expanded_list',
+  ADD_BOOK = 'addBook',
 }
 
 export enum userListsCollections {

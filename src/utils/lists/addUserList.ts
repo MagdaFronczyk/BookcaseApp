@@ -1,7 +1,7 @@
 import {addDoc, serverTimestamp} from '@react-native-firebase/firestore';
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 //helpers
-import {showToast} from '../../utils/toasts';
+import {showToast} from '../toasts';
 import {LISTS_COLLECTION_REF} from '../../services/firbaseConfig';
 //types
 import {IUserList} from '../../types';

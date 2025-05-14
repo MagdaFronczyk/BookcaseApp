@@ -17,6 +17,9 @@ const addListButton = StyleSheet.create({
 
 const listItem = StyleSheet.create({
   container: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
     gap: scale(8),
     borderRadius: moderateScale(4),
@@ -26,7 +29,6 @@ const listItem = StyleSheet.create({
     marginBottom: scale(5),
   },
   name: {
-    flex: 1,
     letterSpacing: 0.5,
   },
   expandIcon: {

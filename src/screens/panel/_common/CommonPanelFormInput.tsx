@@ -4,11 +4,11 @@ import {TextInput} from 'react-native';
 //styles
 import {commonAccountFormInput as styles} from './_styles';
 //types
-import {IPanelFormData} from '../../../types/index';
+import {IListBookFormData, IPanelFormData} from '../../../types/index';
 import {theme} from '../../../style/styles';
 
 type Props = {
-  form: IPanelFormData;
+  form: IPanelFormData | IListBookFormData;
 };
 
 const CommonPanelFormInput: React.FC<Props> = ({form}): React.JSX.Element => {

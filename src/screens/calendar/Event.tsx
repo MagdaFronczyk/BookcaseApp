@@ -1,17 +1,17 @@
-import React, {memo} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 
 //types
 import {ICalendarEvent} from '../../types/calendar';
 //components
 import RobotoBold from '../../components/fonts/RobotoBold';
+import RobotoRegular from '../../components/fonts/RobotoRegular';
 //styles
 import {theme} from '../../style/styles';
 import {event as styles} from './_styles';
-import RobotoRegular from '../../components/fonts/RobotoRegular';
 
-const Event = memo(
-  ({item}: {item: ICalendarEvent}) => (
+const Event = ({item}: {item: ICalendarEvent}) => {
+  return (
     <View style={styles.eventItem}>
       <RobotoBold
         numberOfLines={2}
@@ -27,10 +27,7 @@ const Event = memo(
         {new Date(item.startDate * 1000).toDateString()}
       </RobotoRegular>
     </View>
-  ),
-  (prevProps, nextProps) => {
-    return prevProps.item === nextProps.item;
-  },
-);
+  );
+};
 
 export default Event;

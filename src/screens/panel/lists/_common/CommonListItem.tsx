@@ -23,7 +23,6 @@ type Props = {
 const CommonListItem: React.FC<Props> = ({
   userList,
   handler,
-  withExpandIcon = true,
 }): React.JSX.Element => {
   return (
     <Pressable
@@ -32,6 +31,7 @@ const CommonListItem: React.FC<Props> = ({
       accessibilityHint="Po kliknięciu przenosi na widok szczegółów list."
       style={({pressed}) => [
         styles.container,
+
         {
           opacity: pressed ? 0.7 : 1,
           backgroundColor: theme.backgroundColor.black,
@@ -45,14 +45,12 @@ const CommonListItem: React.FC<Props> = ({
         color={theme.color.white}>
         {userList.listName}
       </RobotoBold>
-      {withExpandIcon && (
-        <ExpandIcon
-          style={styles.expandIcon}
-          expanded={true}
-          height={EXPAND_ICON_SIZE}
-          width={EXPAND_ICON_SIZE}
-        />
-      )}
+      <ExpandIcon
+        style={styles.expandIcon}
+        expanded={true}
+        height={EXPAND_ICON_SIZE}
+        width={EXPAND_ICON_SIZE}
+      />
     </Pressable>
   );
 };

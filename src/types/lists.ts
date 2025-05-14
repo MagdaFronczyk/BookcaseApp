@@ -14,14 +14,23 @@ export type IUserListBooksResponse = {
 };
 
 export type IUserListBook = {
-  firestoreId: string;
   createdAt: FirebaseFirestoreTypes.FieldValue;
-  listId: string;
-  listName: string;
+  listId: string | undefined;
+  listName: string | undefined;
   ownerUid: string;
-  itemData: IUserListBookItemData;
+  bookTitle: string;
+  bookAuthor: string;
+  bookId: string;
 };
 
-export type IUserListBookItemData = {
-  book: string;
+export type IListBookForm = {
+  bookTitle: string;
+  bookAuthor: string;
+};
+
+export type IListBookFormData = {
+  placeholder: string;
+  handler: (email: string) => void;
+  inputValue: string;
+  secure: boolean;
 };
