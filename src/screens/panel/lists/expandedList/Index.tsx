@@ -8,6 +8,7 @@ import ExpandedListHeader from './ExpandedListHeader';
 import {index as styles} from './_styles';
 //types
 import {RootStackScreenProps} from '../../../../../src/types';
+import UserBooks from './UserBooks';
 
 const Index: React.FC = (): React.JSX.Element => {
   const route = useRoute<RootStackScreenProps<'UserListsModals'>['route']>();
@@ -24,6 +25,7 @@ const Index: React.FC = (): React.JSX.Element => {
   return (
     <View style={styles.container}>
       <ExpandedListHeader listName={listName || ''} listId={listId || ''} />
+      <UserBooks listId={listId} />
     </View>
   );
 };

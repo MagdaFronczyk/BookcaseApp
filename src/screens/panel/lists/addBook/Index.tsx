@@ -13,7 +13,7 @@ import CommonPanelButton from '../../_common/CommonPanelButton';
 import {index as styles} from './_styles';
 import {theme} from '../../../../style/styles';
 import {useRoute} from '@react-navigation/native';
-import useUserBooks from '../../../../utils/hooks/useUserBooks';
+import useUserBook from '../../../../utils/hooks/useUserBook';
 import RobotoLight from '../../../../components/fonts/RobotoLight';
 
 const INITIAL_FORM: IListBookForm = {
@@ -27,7 +27,7 @@ const Index: React.FC = (): JSX.Element => {
 
   const {listId, listName} = route.params;
 
-  const {handleAddUserListBook, errors} = useUserBooks(
+  const {handleAddUserListBook, errors} = useUserBook(
     listId,
     listName,
     bookForm,
@@ -50,8 +50,6 @@ const Index: React.FC = (): JSX.Element => {
       };
     });
   };
-
-  const addUserListBook = (): void => {};
 
   const formData: IListBookFormData[] = useMemo(() => {
     return [

@@ -1,16 +1,8 @@
-import {
-  addDoc,
-  query,
-  serverTimestamp,
-  where,
-} from '@react-native-firebase/firestore';
+import {addDoc, serverTimestamp} from '@react-native-firebase/firestore';
 import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 //helpers
 import {showToast} from '../../utils/toasts';
-import {
-  BOOKS_COLLECTION_REF,
-  LISTS_COLLECTION_REF,
-} from '../../services/firbaseConfig';
+import {BOOKS_COLLECTION_REF} from '../../services/firbaseConfig';
 //types
 import {IUserListBook} from '../../types';
 
