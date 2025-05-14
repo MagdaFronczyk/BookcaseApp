@@ -25,6 +25,7 @@ import {
 import {theme} from '../../../../style/styles';
 //redux
 import {RootState} from '../../../../services/Redux/store';
+import {listModalScreenNames} from '../../../../types/enums';
 
 type Props = {
   listName: IUserList['listName'];
@@ -84,6 +85,21 @@ const ExpandedListHeader: React.FC<Props> = ({
     );
   }, [isConnected, listName, toastButtonsData]);
 
+  const handleNavigateToAddUserBook = useCallback((): void => {
+    if (!isConnected) {
+      showToastWithTitle(
+        'Jesteś OFFLINE',
+        'Akcja możliwa po przywróceniu połączenia internetowego.',
+      );
+      return;
+    }
+    navigation.navigate('UserListsModals', {
+      screen: listModalScreenNames.ADD_BOOK,
+      listId: listId,
+      listName: listName,
+    });
+  }, [isConnected, listId, listName, navigation]);
+
   return (
     <View
       style={[
@@ -110,6 +126,24 @@ const ExpandedListHeader: React.FC<Props> = ({
             color={theme.color.black}
             size={theme.fontSize.thirteen}>
             usuń listę
+          </RobotoMedium>
+        </Pressable>
+        <Pressable
+          style={({pressed}) => {
+            return {
+              ...styles.removeButton,
+              opacity: pressed ? 0.7 : 1,
+              backgroundColor: theme.backgroundColor.white,
+            };
+          }}
+          accessibilityRole="button"
+          accessibilityLabel="Usuń listę."
+          accessibilityHint={`Po kliknięciu lista: ${listName} zostanie usunięta.`}
+          onPress={handleNavigateToAddUserBook}>
+          <RobotoMedium
+            color={theme.color.black}
+            size={theme.fontSize.thirteen}>
+            dodaj do listy
           </RobotoMedium>
         </Pressable>
       </View>

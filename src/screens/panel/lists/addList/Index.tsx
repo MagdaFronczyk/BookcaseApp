@@ -7,7 +7,7 @@ import CommonPanelButton from '../../_common/CommonPanelButton';
 import CommonPanelFormInput from '../../_common/CommonPanelFormInput';
 //helpers
 import {showToast} from '../../../../utils/toasts';
-import {addUserList} from '../../../../utils/lists/addUserLists';
+import {addUserList} from '../../../../utils/lists/addUserList';
 import {useFirebaseUser} from '../../../../utils/hooks';
 //styles
 import {index as styles} from './_styles';

@@ -1,23 +1,26 @@
-import React from 'react';
-import {Pressable, TextInput} from 'react-native';
-import {
-  addCalendarEvent,
-  fetchCalendarEvents,
-} from '../../modules/CalendarModule';
+import React, {useMemo, useState} from 'react';
+import {Pressable} from 'react-native';
+import {fetchCalendarEvents} from '../../modules/CalendarModule';
 
 //components
 import RobotoRegular from '../../components/fonts/RobotoRegular';
+import RobotoLight from '../../components/fonts/RobotoLight';
+import CommonPanelFormInput from '../panel/_common/CommonPanelFormInput';
 //permissions
 import {usePermission} from '../../utils/hooks/usePermissions';
 //styles
 import {theme} from '../../style/styles';
 import {form as styles} from './_styles';
+//types
 import {status} from '../../types/enums';
-import {ICalendarEvent} from '../../types/calendar';
+import {
+  ICalendarEvent,
+  ICalendarEventForm,
+  ICalendarEventFormData,
+} from '../../types/calendar';
 import {ICommonResponseWithoutTotal} from '../../types';
-import useInput from '../../utils/hooks/useInput';
-import {validateEventName} from '../../utils/validation';
-import RobotoLight from '../../components/fonts/RobotoLight';
+//utils
+import useCalendar from '../../utils/hooks/useCalendar';
 
 type Props = {
   setResponse: React.Dispatch<
@@ -25,56 +28,64 @@ type Props = {
   >;
 };
 
+const INITIAL_FORM: ICalendarEventForm = {
+  event: '',
+};
+
 const Form: React.FC<Props> = ({setResponse}): JSX.Element => {
   const {permissions, handleOpenSettings} = usePermission();
-  const {
-    value: eventTitle,
-    isValid: eventIsValid,
-    hasErrors: eventHasErrors,
-    handleOnTextChanged: setEventTitle,
-    handleTouch: handleTouchEventName,
-    handlePressButton: handlePressAddEventButton,
-    reset: resetEventTitle,
-  } = useInput(validateEventName);
+  const [signInForm, setSignInForm] =
+    useState<ICalendarEventForm>(INITIAL_FORM);
+  const {addEvent, errors} = useCalendar(signInForm);
 
-  const handleAddEvent = async (title: string) => {
-    const startDate = (new Date().getTime() / 1000 + 3600) * 1000;
-    const endDate = (new Date().getTime() / 1000 + 3600) * 1000;
-    handlePressAddEventButton();
-    if (eventIsValid) {
-      try {
-        await addCalendarEvent(title, startDate, endDate);
-        // Refresh the events list after adding a new event
-        const events = await fetchCalendarEvents();
-        setResponse({status: status.RESOLVED, data: events});
-        resetEventTitle();
-      } catch (error) {
-        setResponse({status: status.REJECTED, data: null});
-      }
+  const handleAddEvent = async () => {
+    try {
+      await addEvent();
+      // Refresh the events list after adding a new event
+      const events = await fetchCalendarEvents();
+      setResponse({status: status.RESOLVED, data: events});
+    } catch (error) {
+      setResponse({status: status.REJECTED, data: null});
     }
   };
 
+  const handleEvent = (event: string): void => {
+    setSignInForm({
+      event: event,
+    });
+  };
+
+  const formData: ICalendarEventFormData = useMemo(() => {
+    return {
+      placeholder: 'Zdarzenie',
+      handler: handleEvent,
+      inputValue: signInForm.event,
+      secure: false,
+    };
+  }, [signInForm.event]);
+
   return (
     <>
-      <TextInput
-        style={styles.input}
-        onChangeText={setEventTitle}
-        value={eventTitle}
-        placeholder="Nazwa wydarzenia"
-        onTouchStart={handleTouchEventName}
-      />
-      {eventHasErrors ? (
-        <RobotoLight color={theme.color.error} size={theme.fontSize.eleven}>
-          Pole nie moe być puste
-        </RobotoLight>
-      ) : null}
+      <CommonPanelFormInput key={formData.placeholder} form={formData} />
+      {errors.length
+        ? errors.map(error => {
+            return (
+              <RobotoLight
+                color={theme.color.error}
+                size={theme.fontSize.eleven}
+                key={error}>
+                {error}
+              </RobotoLight>
+            );
+          })
+        : null}
       {permissions.calendar ? (
         <Pressable
           style={[
             styles.button,
             {backgroundColor: theme.backgroundColor.black},
           ]}
-          onPress={() => handleAddEvent(eventTitle)}>
+          onPress={handleAddEvent}>
           <RobotoRegular
             numberOfLines={1}
             size={theme.fontSize.fifteen}

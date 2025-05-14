@@ -24,6 +24,8 @@ export type RootStackParamList = {
     screen: listModalScreenNames;
     listId?: string;
     listName?: string;
+    title?: string;
+    author?: string;
   };
 
   Informacje: undefined;

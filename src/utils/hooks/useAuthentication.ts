@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useMemo, useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 
 import {useNavigation} from '@react-navigation/native';
 import {getAuth} from '@react-native-firebase/auth';
@@ -36,12 +36,7 @@ export const useAuthentication = (form: IPanelAuthForm) => {
     };
   }, [form]);
 
-  useEffect(() => {
-    console.log(panelAuthErrors);
-  }, [panelAuthErrors]);
-
   const handleSignUp = useCallback(() => {
-    setErrors([]);
     if (
       !authChecklist.isEmailValid ||
       !authChecklist.isPassLenValid ||
@@ -77,6 +72,7 @@ export const useAuthentication = (form: IPanelAuthForm) => {
     getAuth()
       .createUserWithEmailAndPassword(form.email, form.password as string)
       .then(() => {
+        setErrors([]);
         navigation.goBack();
       })
       .catch(error => {

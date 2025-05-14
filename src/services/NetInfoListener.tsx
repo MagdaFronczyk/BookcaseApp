@@ -12,6 +12,7 @@ const NetInfoListener: React.FC = (): null => {
 
   useEffect(() => {
     const subscribe = NetInfo.addEventListener(state => {
+      console.log(state);
       if (!state.isConnected || !state.isInternetReachable) {
         showToast(
           state.isConnected
@@ -19,7 +20,7 @@ const NetInfoListener: React.FC = (): null => {
             : 'Brak połączenia z internetem',
         );
 
-        dispatch(toggleConnection(state.isConnected));
+        dispatch(toggleConnection(true));
       }
     });
     return () => subscribe();

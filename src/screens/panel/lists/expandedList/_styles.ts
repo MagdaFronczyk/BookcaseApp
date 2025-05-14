@@ -14,12 +14,15 @@ const expandedListHeader = StyleSheet.create({
     paddingHorizontal: scale(20),
     paddingVertical: verticalScale(16),
   },
-  wrapper: {gap: verticalScale(6)},
+  wrapper: {
+    gap: verticalScale(6),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   removeButton: {
     borderRadius: scale(4),
     paddingHorizontal: scale(10),
     paddingVertical: scale(6),
-    marginRight: 'auto',
   },
 });
 
