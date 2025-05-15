@@ -1,18 +1,14 @@
 import React from 'react';
 import {Pressable} from 'react-native';
 
-import {scale} from 'react-native-size-matters';
 //components
 import RobotoBold from '../../../../components/fonts/RobotoBold';
-import ExpandIcon from '../../../../components/icons/ExpandIcon';
 //helpers
 //styles
 import {listItem as styles} from './_styles';
 //types
 import {IUserList} from '../../../../types';
 import {theme} from '../../../../style/styles';
-
-const EXPAND_ICON_SIZE = scale(30);
 
 type Props = {
   userList: IUserList;
@@ -45,12 +41,6 @@ const CommonListItem: React.FC<Props> = ({
         color={theme.color.white}>
         {userList.listName}
       </RobotoBold>
-      <ExpandIcon
-        style={styles.expandIcon}
-        expanded={true}
-        height={EXPAND_ICON_SIZE}
-        width={EXPAND_ICON_SIZE}
-      />
     </Pressable>
   );
 };

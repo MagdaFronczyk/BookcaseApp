@@ -1,6 +1,11 @@
 import {useEffect, useState} from 'react';
 
-import {onSnapshot, query, where} from '@react-native-firebase/firestore';
+import {
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from '@react-native-firebase/firestore';
 
 //types
 import {status} from '../../types/enums';
@@ -38,6 +43,7 @@ const useUserBooks = (listId: string | undefined) => {
           querySnapshot.forEach(book => {
             userListBooksData.push({
               ...(book.data() as IUserListBook),
+              bookId: book.id,
             });
             setUserListBooksResponse({
               data: userListBooksData,

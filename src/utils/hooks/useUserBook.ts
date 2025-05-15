@@ -1,7 +1,5 @@
 import {useMemo, useState} from 'react';
 
-import uuid from 'react-native-uuid';
-
 //types
 import {IListBookForm} from '../../types';
 //utils
@@ -20,7 +18,6 @@ const useUserBooks = (
   const {user} = useFirebaseUser();
 
   const [errors, setErrors] = useState<string[]>([]);
-  const bookId = uuid.v4();
 
   const bookChecklist = useMemo(() => {
     const isBookAuthorLenValid = form.bookAuthor?.length > MIN_AUTHOR_LEN;
@@ -60,7 +57,6 @@ const useUserBooks = (
           listId,
           form.bookAuthor,
           form.bookTitle,
-          bookId,
         );
         setErrors([]);
       } catch (error) {

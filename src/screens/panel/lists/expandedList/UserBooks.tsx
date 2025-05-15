@@ -1,12 +1,15 @@
 import React from 'react';
-import useUserBooks from '../../../../utils/hooks/useUserBooks';
+
 import {FlatList} from 'react-native-gesture-handler';
-import CommonNoData from '../_common/CommonNoData';
-import {status} from '../../../../types/enums';
+
+//components
 import CommonLoading from '../../../../components/CommonLoading';
+import useUserBooks from '../../../../utils/hooks/useUserBooks';
+import CommonNoData from '../_common/CommonNoData';
+import CommonBookItem from '../_common/CommonBookItem';
+//types
+import {status} from '../../../../types/enums';
 import {IUserListBook} from '../../../../types';
-import RobotoBlack from '../../../../components/fonts/RobotoBlack';
-import {theme} from '../../../../style/styles';
 
 type Props = {
   listId: string | undefined;
@@ -16,9 +19,7 @@ const UserBooks: React.FC<Props> = ({listId}): JSX.Element => {
   const {userListBooksResponse} = useUserBooks(listId);
 
   const renderItem = ({item}: {item: IUserListBook}) => (
-    <RobotoBlack size={theme.fontSize.fifteen} color={theme.color.black}>
-      {item.bookAuthor}
-    </RobotoBlack>
+    <CommonBookItem userListBook={item} />
   );
 
   const keyExtractor = (item: IUserListBook, index: number) =>
@@ -29,7 +30,7 @@ const UserBooks: React.FC<Props> = ({listId}): JSX.Element => {
   }
 
   if (!userListBooksResponse.data.length) {
-    return <CommonNoData text="Brak list personalnych" />;
+    return <CommonNoData text="Brak ksiazek na liscie" />;
   }
 
   if (userListBooksResponse.status === status.REJECTED) {

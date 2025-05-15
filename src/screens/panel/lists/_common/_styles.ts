@@ -17,22 +17,13 @@ const addListButton = StyleSheet.create({
 
 const listItem = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: scale(8),
     borderRadius: moderateScale(4),
     paddingHorizontal: scale(8),
     paddingVertical: scale(12),
-    marginHorizontal: scale(6),
     marginBottom: scale(5),
   },
   name: {
     letterSpacing: 0.5,
-  },
-  expandIcon: {
-    transform: [{rotate: '90deg'}],
   },
 });
 
@@ -46,4 +37,20 @@ const commonNoData = StyleSheet.create({
   },
 });
 
-export {addListButton, listItem, commonNoData};
+const bookItem = StyleSheet.create({
+  container: {
+    borderWidth: scale(1),
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: scale(15),
+    marginBottom: scale(5),
+  },
+  image: {
+    width: scale(20),
+    height: scale(20),
+    position: 'absolute',
+    right: scale(10),
+  },
+});
+
+export {addListButton, listItem, commonNoData, bookItem};
