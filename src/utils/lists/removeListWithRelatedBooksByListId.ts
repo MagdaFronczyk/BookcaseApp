@@ -15,19 +15,19 @@ import {
 //types
 import {RootStackScreenProps} from '../../../src/types';
 
-export const removeListWithRelatedBooksByListId = async (
+export const removeListWithRelatedBooksByListId = (
   listId: string,
   listName: string,
   ownerUid: FirebaseAuthTypes.User['uid'] | null,
   navigation?: RootStackScreenProps<'UserListsModals'>['navigation'],
-): Promise<void> => {
+): void => {
   const booksQuery = query(
     BOOKS_COLLECTION_REF,
     where('ownerUid', '==', ownerUid),
     where('listId', '==', listId),
   );
 
-  await getDocs(booksQuery).then(querySnapshot => {
+  getDocs(booksQuery).then(querySnapshot => {
     if (querySnapshot && !querySnapshot?.empty) {
       querySnapshot.forEach(relatedBook => {
         deleteDoc(doc(BOOKS_COLLECTION_REF, relatedBook.id));
@@ -35,7 +35,7 @@ export const removeListWithRelatedBooksByListId = async (
     }
   });
 
-  await deleteDoc(doc(LISTS_COLLECTION_REF, listId))
+  deleteDoc(doc(LISTS_COLLECTION_REF, listId))
     .then(() => {
       showToast(`Usunięto listę ${listName}.`);
     })

@@ -2,6 +2,10 @@ import {StyleSheet} from 'react-native';
 
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 
+const EXPAND_ICON_SIZE = scale(40);
+const REMOVE_ICON_SIZE = scale(20);
+const ADD_ICON_SIZE = scale(40);
+
 const addListButton = StyleSheet.create({
   container: {
     paddingVertical: verticalScale(30),
@@ -9,9 +13,9 @@ const addListButton = StyleSheet.create({
     flexDirection: 'row',
   },
   icon: {
-    borderRadius: 999,
-    padding: scale(10),
-    marginHorizontal: scale(8),
+    width: ADD_ICON_SIZE,
+    height: ADD_ICON_SIZE,
+    marginRight: scale(10),
   },
 });
 
@@ -21,9 +25,18 @@ const listItem = StyleSheet.create({
     paddingHorizontal: scale(8),
     paddingVertical: scale(12),
     marginBottom: scale(5),
+    flexDirection: 'row',
+    borderWidth: scale(1),
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   name: {
     letterSpacing: 0.5,
+  },
+  expandIcon: {
+    width: EXPAND_ICON_SIZE,
+    height: EXPAND_ICON_SIZE,
+    marginLeft: scale(10),
   },
 });
 
@@ -45,11 +58,9 @@ const bookItem = StyleSheet.create({
     padding: scale(15),
     marginBottom: scale(5),
   },
-  image: {
-    width: scale(20),
-    height: scale(20),
-    position: 'absolute',
-    right: scale(10),
+  removeButton: {
+    width: REMOVE_ICON_SIZE,
+    height: REMOVE_ICON_SIZE,
   },
 });
 

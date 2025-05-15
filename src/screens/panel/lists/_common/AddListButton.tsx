@@ -1,11 +1,11 @@
 import React from 'react';
 import {Pressable, View} from 'react-native';
 
-import {scale} from 'react-native-size-matters';
 import {useSelector} from 'react-redux';
+import FastImage from 'react-native-fast-image';
+
 //components
 import RobotoBold from '../../../../components/fonts/RobotoBold.tsx';
-import AddIcon from '../../../../components/icons/AddIcon.tsx';
 //helpers
 import {useFirebaseUser} from '../../../../utils/hooks/index.ts';
 //styles
@@ -16,7 +16,7 @@ import {showToastWithTitle} from '../../../../utils/toasts/index.ts';
 //redux
 import {RootState} from '../../../../services/Redux/store.ts';
 
-const ADD_ICON_SIZE = scale(24);
+import AddIcon from '../../../../assets/icons/add_icon.png';
 
 type Props = {
   handler: () => void;
@@ -36,6 +36,9 @@ const AddListButton: React.FC<Props> = ({handler}): React.JSX.Element => {
       );
       return;
     }
+    if (!user) {
+      showToastWithTitle('Nie jestes zalogowany', 'Nie mozesz dodac listy.');
+    }
     handler();
   };
   return (
@@ -50,15 +53,11 @@ const AddListButton: React.FC<Props> = ({handler}): React.JSX.Element => {
         },
       ]}
       onPress={handleAddList}>
-      <View
-        style={{
-          ...styles.icon,
-          backgroundColor: user
-            ? theme.backgroundColor.black
-            : theme.backgroundColor.lightGray,
-        }}>
-        <AddIcon size={ADD_ICON_SIZE} color={theme.color.white} />
-      </View>
+      <FastImage
+        resizeMode={FastImage.resizeMode.contain}
+        style={styles.icon}
+        source={AddIcon}
+      />
       <RobotoBold size={theme.fontSize.eleven} color={theme.color.black}>
         DODAJ LISTĘ
       </RobotoBold>

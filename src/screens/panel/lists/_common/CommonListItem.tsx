@@ -1,6 +1,8 @@
 import React from 'react';
 import {Pressable} from 'react-native';
 
+import FastImage from 'react-native-fast-image';
+
 //components
 import RobotoBold from '../../../../components/fonts/RobotoBold';
 //helpers
@@ -16,6 +18,8 @@ type Props = {
   withExpandIcon?: boolean;
 };
 
+import ExpandIcon from '../../../../assets/icons/arrow_right_icon.png';
+
 const CommonListItem: React.FC<Props> = ({
   userList,
   handler,
@@ -30,7 +34,6 @@ const CommonListItem: React.FC<Props> = ({
 
         {
           opacity: pressed ? 0.7 : 1,
-          backgroundColor: theme.backgroundColor.black,
         },
       ]}
       onPress={() => handler(userList)}>
@@ -38,9 +41,14 @@ const CommonListItem: React.FC<Props> = ({
         numberOfLines={1}
         style={styles.name}
         size={theme.fontSize.fifteen}
-        color={theme.color.white}>
+        color={theme.color.black}>
         {userList.listName}
       </RobotoBold>
+      <FastImage
+        resizeMode={FastImage.resizeMode.contain}
+        style={styles.expandIcon}
+        source={ExpandIcon}
+      />
     </Pressable>
   );
 };

@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 
 import {
+  limit,
   onSnapshot,
   orderBy,
   query,
@@ -36,6 +37,7 @@ const useUserBooks = (listId: string | undefined) => {
         BOOKS_COLLECTION_REF,
         where('ownerUid', '==', user.uid),
         where('listId', '==', listId),
+        orderBy('createdAt'),
       );
       const unsubscribe = onSnapshot(q, querySnapshot => {
         const userListBooksData: IUserListBook[] = [];
