@@ -1,5 +1,8 @@
 import {View} from 'react-native';
 import React, {useMemo, useState} from 'react';
+
+import {useRoute} from '@react-navigation/native';
+
 //types
 import {
   IListBookForm,
@@ -9,12 +12,11 @@ import {
 //components
 import CommonPanelFormInput from '../../_common/CommonPanelFormInput';
 import CommonPanelButton from '../../_common/CommonPanelButton';
+import CommonPanelError from '../../_common/CommonPanelError';
 //styles
 import {index as styles} from './_styles';
 import {theme} from '../../../../style/styles';
-import {useRoute} from '@react-navigation/native';
 import useUserBook from '../../../../utils/hooks/useUserBook';
-import RobotoLight from '../../../../components/fonts/RobotoLight';
 
 const INITIAL_FORM: IListBookForm = {
   bookTitle: '',
@@ -90,15 +92,8 @@ const Index: React.FC = (): JSX.Element => {
         }
       />
       {errors.length
-        ? errors.map(error => {
-            return (
-              <RobotoLight
-                color={theme.color.error}
-                size={theme.fontSize.eleven}
-                key={error}>
-                {error}
-              </RobotoLight>
-            );
+        ? errors.map((error, index) => {
+            return <CommonPanelError error={error} key={index} />;
           })
         : null}
     </View>

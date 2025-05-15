@@ -6,7 +6,7 @@ import FastImage from 'react-native-fast-image';
 import {RootStackScreenProps} from '../../../types/navigation';
 //components
 import Details from './Details';
-import Image from '../../../components/BookImage';
+import BookImage from '../../../components/BookImage';
 //services
 import {STOARGE_KEY} from '../../../services/RNAsyncStorage';
 
@@ -22,7 +22,7 @@ const Index: React.FC<Props> = ({route}): JSX.Element => {
 
   return (
     <ScrollView>
-      <Image
+      <BookImage
         book={book}
         imageSource={{
           uri: book.simple_thumb,

@@ -24,8 +24,7 @@ export const calendarEventErrors = {
 
 //list
 export const userListBookErrors = {
-  common:
-    'Wystąpił błąd podczas dodawania ksiazki. Spróbuj ponownie później.',
+  common: 'Wystąpił błąd podczas dodawania ksiazki. Spróbuj ponownie później.',
   tooShortBookAuthor: 'Wpisany autor ksiązki zawiera za mało znaków.',
-  tooShortBookTitle: 'Wpisany tytuł ksiązki zawiera za małoo znaków.',
+  tooShortBookTitle: 'Wpisany tytuł ksiązki zawiera za mało znaków.',
 };

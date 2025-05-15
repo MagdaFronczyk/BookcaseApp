@@ -8,21 +8,28 @@ const index = StyleSheet.create({
 });
 
 const expandedListHeader = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    paddingHorizontal: scale(20),
-    paddingVertical: verticalScale(16),
-  },
   wrapper: {
     gap: verticalScale(6),
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: verticalScale(16),
   },
   removeButton: {
+    position: 'absolute',
+    right: scale(10),
+    borderRadius: scale(15),
+  },
+  addButton: {
     borderRadius: scale(4),
     paddingHorizontal: scale(10),
     paddingVertical: scale(6),
+    borderWidth: scale(1),
+    alignSelf: 'center',
+    margin: scale(10),
+  },
+  image: {
+    width: scale(30),
+    height: scale(30),
   },
 });
 

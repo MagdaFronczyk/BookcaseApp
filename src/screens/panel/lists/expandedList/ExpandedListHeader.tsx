@@ -3,7 +3,9 @@ import {Pressable, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import Toast from 'react-native-toast-message';
+import FastImage from 'react-native-fast-image';
 import {useNavigation} from '@react-navigation/native';
+
 //components
 import RobotoBold from '../../../../components/fonts/RobotoBold';
 import RobotoMedium from '../../../../components/fonts/RobotoMedium';
@@ -26,6 +28,8 @@ import {theme} from '../../../../style/styles';
 //redux
 import {RootState} from '../../../../services/Redux/store';
 import {listModalScreenNames} from '../../../../types/enums';
+
+import DeleteIcon from '../../../../assets/icons/remove_icon.png';
 
 type Props = {
   listName: IUserList['listName'];
@@ -101,13 +105,13 @@ const ExpandedListHeader: React.FC<Props> = ({
   }, [isConnected, listId, listName, navigation]);
 
   return (
-    <View
-      style={[
-        styles.container,
-        {backgroundColor: theme.backgroundColor.black},
-      ]}>
-      <View style={styles.wrapper}>
-        <RobotoBold color={theme.color.white} size={theme.fontSize.eighteen}>
+    <View>
+      <View
+        style={[
+          styles.wrapper,
+          {backgroundColor: theme.backgroundColor.black},
+        ]}>
+        <RobotoBold color={theme.color.white} size={theme.fontSize.twentyTwo}>
           {listName}
         </RobotoBold>
         <Pressable
@@ -122,31 +126,29 @@ const ExpandedListHeader: React.FC<Props> = ({
           accessibilityLabel="Usuń listę."
           accessibilityHint={`Po kliknięciu lista: ${listName} zostanie usunięta.`}
           onPress={handleRemoveUserList}>
-          <RobotoMedium
-            color={theme.color.black}
-            size={theme.fontSize.thirteen}>
-            usuń listę
-          </RobotoMedium>
-        </Pressable>
-        <Pressable
-          style={({pressed}) => {
-            return {
-              ...styles.removeButton,
-              opacity: pressed ? 0.7 : 1,
-              backgroundColor: theme.backgroundColor.white,
-            };
-          }}
-          accessibilityRole="button"
-          accessibilityLabel="Usuń listę."
-          accessibilityHint={`Po kliknięciu lista: ${listName} zostanie usunięta.`}
-          onPress={handleNavigateToAddUserBook}>
-          <RobotoMedium
-            color={theme.color.black}
-            size={theme.fontSize.thirteen}>
-            dodaj do listy
-          </RobotoMedium>
+          <FastImage
+            resizeMode={FastImage.resizeMode.contain}
+            style={styles.image}
+            source={DeleteIcon}
+          />
         </Pressable>
       </View>
+      <Pressable
+        style={({pressed}) => {
+          return {
+            ...styles.addButton,
+            opacity: pressed ? 0.7 : 1,
+            backgroundColor: theme.backgroundColor.white,
+          };
+        }}
+        accessibilityRole="button"
+        accessibilityLabel="Usuń listę."
+        accessibilityHint={`Po kliknięciu lista: ${listName} zostanie usunięta.`}
+        onPress={handleNavigateToAddUserBook}>
+        <RobotoMedium color={theme.color.black} size={theme.fontSize.thirteen}>
+          dodaj do listy
+        </RobotoMedium>
+      </Pressable>
     </View>
   );
 };

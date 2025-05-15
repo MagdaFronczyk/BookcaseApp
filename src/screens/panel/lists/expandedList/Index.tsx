@@ -18,7 +18,7 @@ const Index: React.FC = (): React.JSX.Element => {
 
   useEffect(() => {
     navigation.setOptions({
-      title: listName,
+      title: '',
     });
   }, [navigation, listName]);
 
