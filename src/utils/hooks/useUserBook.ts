@@ -1,11 +1,12 @@
 import {useMemo, useState} from 'react';
 
 //types
-import {IListBookForm} from '../../types';
+import {IListBookForm, RootStackScreenProps} from '../../types';
 //utils
 import {useFirebaseUser} from './useFirebaseUser';
 import {userListBookErrors} from '../constants';
 import {addUserListBook} from '../lists/addUserListBook';
+import {useNavigation} from '@react-navigation/native';
 
 const MIN_AUTHOR_LEN = 1;
 const MIN_TITLE_LEN = 1;
@@ -18,6 +19,8 @@ const useUserBooks = (
   const {user} = useFirebaseUser();
 
   const [errors, setErrors] = useState<string[]>([]);
+  const navigation =
+    useNavigation<RootStackScreenProps<'UserListsModals'>['navigation']>();
 
   const bookChecklist = useMemo(() => {
     const isBookAuthorLenValid = form.bookAuthor?.length > MIN_AUTHOR_LEN;
@@ -28,7 +31,7 @@ const useUserBooks = (
     };
   }, [form]);
 
-  const handleAddUserListBook = async () => {
+  const handleAddUserListBook = () => {
     setErrors([]);
 
     if (
@@ -50,20 +53,15 @@ const useUserBooks = (
     }
 
     if (user && user.uid) {
-      try {
-        await addUserListBook(
-          user,
-          listName,
-          listId,
-          form.bookAuthor,
-          form.bookTitle,
-        );
-        setErrors([]);
-      } catch (error) {
-        setErrors(prev => {
-          return [...prev, userListBookErrors.common];
-        });
-      }
+      addUserListBook(
+        user,
+        listName,
+        listId,
+        form.bookAuthor,
+        form.bookTitle,
+        navigation,
+      );
+      setErrors([]);
     }
   };
 

@@ -5,7 +5,8 @@ import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {showToast} from '../../utils/toasts';
 import {BOOKS_COLLECTION_REF} from '../../services/firbaseConfig';
 //types
-import {IUserListBook} from '../../types';
+import {IUserListBook, RootStackScreenProps} from '../../types';
+import {listModalScreenNames} from '../../types/enums';
 
 export const addUserListBook = (
   user: FirebaseAuthTypes.User,
@@ -13,7 +14,8 @@ export const addUserListBook = (
   listId: string | undefined,
   author: string,
   title: string,
-) => {
+  navigation: RootStackScreenProps<'UserListsModals'>['navigation'],
+): void => {
   const newListBook: Omit<IUserListBook, 'bookId'> = {
     createdAt: serverTimestamp(),
     listName: listName,
@@ -24,11 +26,15 @@ export const addUserListBook = (
   };
 
   addDoc(BOOKS_COLLECTION_REF, newListBook)
-    .catch(error => {
+    .catch(() => {
       showToast('Nie udało się dodać ksiązki.');
-      console.error(error);
     })
     .finally(() => {
       showToast(`Dodano ksiązkę ${title}`);
+      navigation.navigate('UserListsModals', {
+        screen: listModalScreenNames.EXPANDED_LIST,
+        listId: listId,
+        listName: listName,
+      });
     });
 };
