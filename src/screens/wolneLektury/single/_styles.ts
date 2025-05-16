@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 //components
-import {LIKE_ICON_SIZE} from '../../../components/LikeIcon';
+import {LIKE_ICON_SIZE} from '../../../components/icons/LikeIcon';
 //styles
 import {theme} from '../../../style/styles';
 

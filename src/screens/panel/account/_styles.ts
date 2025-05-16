@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {verticalScale} from 'react-native-size-matters';
+import {scale, verticalScale} from 'react-native-size-matters';
+
+const USER_ICON_SIZE = scale(90);
 
 const index = StyleSheet.create({
   container: {flex: 1},
@@ -39,12 +41,9 @@ const accountHeader = StyleSheet.create({
     alignItems: 'center',
     gap: verticalScale(10),
   },
-  iconWrapper: {
-    width: '38%',
-    aspectRatio: 1,
-    borderRadius: 999,
-    justifyContent: 'center',
-    alignItems: 'center',
+  icon: {
+    width: USER_ICON_SIZE,
+    height: USER_ICON_SIZE,
   },
 });
 

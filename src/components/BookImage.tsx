@@ -17,7 +17,7 @@ import {
   IWolneLekturyBook,
 } from '../types/index';
 //components
-import LikeIcon from './LikeIcon';
+import LikeIcon from './icons/LikeIcon';
 //styles
 import {theme} from '../style/styles';
 //services

@@ -5,7 +5,7 @@ import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
 //components
 import RobotoBlack from './fonts/RobotoBlack';
-import LikeIcon from './LikeIcon';
+import LikeIcon from './icons/LikeIcon.tsx';
 //styles
 import {theme} from '../style/styles.ts';
 //types
